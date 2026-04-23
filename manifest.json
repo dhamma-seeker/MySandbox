@@ -34,6 +34,25 @@
         "en": "Learn candlestick patterns from Doji to Morning Star, with an interactive quiz."
       },
       "tags": ["finance", "trading", "การเงิน"]
+    },
+    {
+      "id": "rsi-indicator",
+      "slug": "rsi-indicator",
+      "path": "sandboxes/rsi-indicator/index.html",
+      "icon": "📈",
+      "title": {
+        "th": "RSI Indicator",
+        "en": "RSI Indicator"
+      },
+      "subtitle": {
+        "th": "ตัววัดโมเมนตัมราคา 0–100",
+        "en": "0–100 momentum oscillator"
+      },
+      "description": {
+        "th": "เจาะสูตร Wilder smoothing พร้อมตารางคำนวณทีละแท่ง กราฟ interactive และการตีความ signal",
+        "en": "Dig into Wilder smoothing with a step-by-step table, interactive chart, and signal interpretation."
+      },
+      "tags": ["finance", "trading", "indicator", "การเงิน"]
     }
   ]
 }

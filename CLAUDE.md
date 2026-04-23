@@ -302,6 +302,36 @@ MySandbox/
 
 ---
 
+## Deployment · Netlify + GitHub
+
+- **Repo:** https://github.com/dhamma-seeker/MySandbox (main branch → auto-deploy)
+- **Config:** `netlify.toml` ที่ root — publish `.`, ไม่มี build step
+- **Publish directory:** `.` (root) — Netlify เสิร์ฟไฟล์ static ได้เลย
+
+### Git commit identity (สำคัญ — ห้ามลืม)
+
+User ตั้ง email ส่วนตัว `rungrot.sup@gmail.com` เป็น **private** บน GitHub ถ้า commit ด้วย email นี้ → push ถูก reject ด้วย `GH007: Your push would publish a private email address`
+
+**แก้ได้โดยตั้ง commit identity ใช้ noreply email:**
+
+```bash
+cd ~/พื้นโต๊ะ/MySandbox
+git config user.email "10030420+dhamma-seeker@users.noreply.github.com"
+git config user.name "dhamma-seeker"
+```
+
+(ตั้งเฉพาะ repo นี้ ไม่กระทบ global)
+
+**ถ้า commit ไปแล้วด้วย email ผิด** ใช้ env vars amend ทั้ง author + committer ก่อน push:
+
+```bash
+GIT_COMMITTER_NAME="dhamma-seeker" \
+GIT_COMMITTER_EMAIL="10030420+dhamma-seeker@users.noreply.github.com" \
+git commit --amend --author="dhamma-seeker <10030420+dhamma-seeker@users.noreply.github.com>" --no-edit
+```
+
+---
+
 ## สถานะปัจจุบัน · Current State
 
 - ✅ Chrome (feed + drawer + language toggle + snap scroll)

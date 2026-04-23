@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSI Indicator · MySandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" title="Back">←</a>
+      <div class="topbar__brand">
+        <span data-lang-th>RSI Indicator</span>
+        <span data-lang-en>RSI Indicator</span>
+      </div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn" title="Toggle language">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>Relative Strength Index (RSI)</span>
+          <span data-lang-en>Relative Strength Index (RSI)</span>
+        </h1>
+        <div class="sub">
+          <span data-lang-th>ตัววัดโมเมนตัมราคา 0–100 · บอกภาวะซื้อมาก/ขายมากและโอกาสกลับตัว</span>
+          <span data-lang-en>A 0–100 momentum oscillator signaling overbought, oversold, and reversal conditions.</span>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>⚠️
+          <span data-lang-th>คำเตือน:</span>
+          <span data-lang-en>Disclaimer:</span>
+        </strong>
+        <span data-lang-th>เนื้อหาเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน ข้อมูลราคาทั้งหมดเป็นตัวอย่างสังเคราะห์</span>
+        <span data-lang-en>Educational content only, not investment advice. All price data here is synthetic.</span>
+      </div>
+
+      <!-- Section 1: Overview -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>📖 RSI คืออะไร</span>
+          <span data-lang-en>📖 What is RSI?</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            RSI (Relative Strength Index) คิดค้นโดย J. Welles Wilder Jr. ปี 1978 ในหนังสือ
+            <em>New Concepts in Technical Trading Systems</em> เป็นตัวบอกโมเมนตัม (momentum oscillator)
+            ที่วัด<em>ความเร็ว</em>และ<em>ขนาด</em>ของการเปลี่ยนแปลงราคา ให้ผลลัพธ์ระหว่าง 0–100
+          </span>
+          <span data-lang-en>
+            RSI (Relative Strength Index), developed by J. Welles Wilder Jr. in 1978 in his book
+            <em>New Concepts in Technical Trading Systems</em>, is a momentum oscillator that measures
+            the <em>speed</em> and <em>magnitude</em> of price changes. Values are bounded between 0 and 100.
+          </span>
+        </p>
+        <div class="fact-grid">
+          <div class="fact">
+            <div class="fact-k">70</div>
+            <div class="fact-v">
+              <span data-lang-th>เกณฑ์ Overbought<br/>(ซื้อมากเกินไป)</span>
+              <span data-lang-en>Overbought threshold<br/>(buying exhausted)</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">30</div>
+            <div class="fact-v">
+              <span data-lang-th>เกณฑ์ Oversold<br/>(ขายมากเกินไป)</span>
+              <span data-lang-en>Oversold threshold<br/>(selling exhausted)</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">50</div>
+            <div class="fact-v">
+              <span data-lang-th>Centerline<br/>(เส้นแบ่งแรงขึ้น/ลง)</span>
+              <span data-lang-en>Centerline<br/>(momentum bias split)</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">14</div>
+            <div class="fact-v">
+              <span data-lang-th>Period มาตรฐาน<br/>(จำนวนแท่งในการคำนวณ)</span>
+              <span data-lang-en>Default period<br/>(bars used in calc)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Formula -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🧮 สูตรคำนวณ — ลึกทีละชั้น</span>
+          <span data-lang-en>🧮 The Formula — Layer by Layer</span>
+        </h2>
+
+        <div class="equation">RSI = 100 − <span class="frac"><span class="num">100</span><span class="den">1 + RS</span></span></div>
+        <div class="equation sub-eq">RS = <span class="frac"><span class="num">Average Gain</span><span class="den">Average Loss</span></span></div>
+
+        <div class="formula-steps">
+          <div class="step">
+            <div class="step-n">1</div>
+            <div class="step-body">
+              <strong><span data-lang-th>คำนวณ Change ของแต่ละแท่ง</span><span data-lang-en>Compute per-bar change</span></strong>
+              <code>Δ = Close<sub>t</sub> − Close<sub>t−1</sub></code>
+              <div class="step-note">
+                <span data-lang-th>ถ้า Δ &gt; 0 → Gain = Δ, Loss = 0 · ถ้า Δ &lt; 0 → Gain = 0, Loss = |Δ|</span>
+                <span data-lang-en>If Δ &gt; 0 → Gain = Δ, Loss = 0 · if Δ &lt; 0 → Gain = 0, Loss = |Δ|</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-n">2</div>
+            <div class="step-body">
+              <strong><span data-lang-th>ค่าเฉลี่ยเริ่มต้น (แท่งที่ period)</span><span data-lang-en>Initial averages (at bar = period)</span></strong>
+              <code>AvgGain₀ = mean(Gain[1..period]) · AvgLoss₀ = mean(Loss[1..period])</code>
+              <div class="step-note">
+                <span data-lang-th>ใช้ค่าเฉลี่ยเลขคณิตธรรมดาของ <em>period</em> แท่งแรกเป็น seed</span>
+                <span data-lang-en>Simple arithmetic mean of the first <em>period</em> bars, used as the seed.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-n">3</div>
+            <div class="step-body">
+              <strong><span data-lang-th>Wilder Smoothing (หลังจากแท่งที่ period)</span><span data-lang-en>Wilder Smoothing (after bar = period)</span></strong>
+              <code>AvgGain<sub>t</sub> = (AvgGain<sub>t−1</sub> × (period − 1) + Gain<sub>t</sub>) ÷ period</code>
+              <code>AvgLoss<sub>t</sub> = (AvgLoss<sub>t−1</sub> × (period − 1) + Loss<sub>t</sub>) ÷ period</code>
+              <div class="step-note">
+                <span data-lang-th>
+                  เทียบเท่า EMA ด้วย α = 1/period · ให้น้ำหนักแท่งใหม่น้อย → RSI <em>smooth</em> กว่า SMA และ
+                  ค่าไม่กระโดดขึ้นลงแรงจากแท่งผิดปกติเพียงแท่งเดียว
+                </span>
+                <span data-lang-en>
+                  Equivalent to an EMA with α = 1/period · weights recent bars lightly so RSI is
+                  <em>smoother</em> than SMA and doesn't jump from a single outlier bar.
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-n">4</div>
+            <div class="step-body">
+              <strong><span data-lang-th>แปลงเป็น RSI</span><span data-lang-en>Convert to RSI</span></strong>
+              <code>RS = AvgGain ÷ AvgLoss · RSI = 100 − 100/(1 + RS)</code>
+              <div class="step-note">
+                <span data-lang-th>
+                  ถ้า AvgLoss = 0 → RSI = 100 (ขึ้นอย่างเดียว) · ถ้า AvgGain = 0 → RSI = 0 (ลงอย่างเดียว) ·
+                  สูตรนี้ทำให้ RSI ถูก<em>บีบ</em>ในช่วง 0–100 เสมอ
+                </span>
+                <span data-lang-en>
+                  If AvgLoss = 0 → RSI = 100 (pure uptrend) · if AvgGain = 0 → RSI = 0 (pure downtrend) ·
+                  the form <em>squashes</em> RSI to [0, 100].
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="intuition">
+          <strong>💡 <span data-lang-th>Intuition</span><span data-lang-en>Intuition</span>:</strong>
+          <span data-lang-th>
+            RS คืออัตราส่วน "ขึ้นเฉลี่ย : ลงเฉลี่ย" ของช่วงเวลา period · ถ้าราคาขึ้นบ่อยและแรง RS จะใหญ่ → RSI ใกล้ 100 ·
+            ถ้าลงแรง RS เล็ก → RSI ใกล้ 0 · สูตร 100 − 100/(1+RS) เป็นฟังก์ชัน monotonic ที่ map (0, ∞) → (0, 100)
+          </span>
+          <span data-lang-en>
+            RS is the "average up : average down" ratio over <em>period</em> bars · when rallies dominate, RS is large → RSI near 100 ·
+            when declines dominate, RS is small → RSI near 0 · the form 100 − 100/(1+RS) is a monotonic map from (0, ∞) to (0, 100).
+          </span>
+        </div>
+      </section>
+
+      <!-- Section 3: Step-by-step calculation table -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🔢 คำนวณทีละแท่ง</span>
+          <span data-lang-en>🔢 Step-by-step Calculation</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ใช้ข้อมูล 20 แท่งแรกของชุด preset ปัจจุบัน · สังเกตว่า RSI เริ่มมีค่าที่แท่งที่ 15 (period = 14 + 1)
+            เพราะต้องใช้ 14 ช่วง (change) ในการคำนวณค่าเฉลี่ยเริ่มต้น · คลิกแถวเพื่อเห็นรายละเอียด
+          </span>
+          <span data-lang-en>
+            Uses the first 20 bars of the current preset · RSI first appears at bar 15 (period = 14 + 1)
+            because it needs 14 changes to seed the initial average · click a row to inspect.
+          </span>
+        </p>
+        <div class="calc-table-wrap">
+          <table class="calc-table" id="calc-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th><span data-lang-th>ราคาปิด</span><span data-lang-en>Close</span></th>
+                <th>Δ</th>
+                <th><span data-lang-th>กำไร</span><span data-lang-en>Gain</span></th>
+                <th><span data-lang-th>ขาดทุน</span><span data-lang-en>Loss</span></th>
+                <th>AvgGain</th>
+                <th>AvgLoss</th>
+                <th>RS</th>
+                <th>RSI</th>
+              </tr>
+            </thead>
+            <tbody id="calc-tbody"></tbody>
+          </table>
+        </div>
+        <div class="calc-detail" id="calc-detail" hidden></div>
+      </section>
+
+      <!-- Section 4: Interactive Chart -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>📊 ทดลองเล่น — กราฟราคา + RSI</span>
+          <span data-lang-en>📊 Try it — Price + RSI Chart</span>
+        </h2>
+
+        <div class="controls">
+          <div class="control-row">
+            <label class="control-label">
+              <span data-lang-th>ชุดข้อมูล:</span>
+              <span data-lang-en>Dataset:</span>
+            </label>
+            <div class="preset-btns" id="preset-btns">
+              <button class="preset-btn active" data-preset="random">
+                <span data-lang-th>🎲 สุ่ม</span>
+                <span data-lang-en>🎲 Random</span>
+              </button>
+              <button class="preset-btn" data-preset="set">🇹🇭 SET</button>
+              <button class="preset-btn" data-preset="btc">₿ BTC</button>
+              <button class="preset-btn" data-preset="gold">🪙 Gold</button>
+            </div>
+            <button class="btn-secondary" id="regenerate-btn">
+              <span data-lang-th>🔄 สุ่มใหม่</span>
+              <span data-lang-en>🔄 Regenerate</span>
+            </button>
+          </div>
+          <div class="control-row">
+            <label class="control-label" for="period-slider">
+              <span data-lang-th>Period:</span>
+              <span data-lang-en>Period:</span>
+            </label>
+            <input type="range" id="period-slider" min="2" max="30" value="14" />
+            <div class="period-display"><span id="period-value">14</span></div>
+          </div>
+        </div>
+
+        <div class="chart-stack">
+          <canvas id="price-chart" width="720" height="280"></canvas>
+          <canvas id="rsi-chart" width="720" height="160"></canvas>
+        </div>
+        <div class="readout" id="readout">
+          <div><span data-lang-th>เลื่อนเมาส์บนกราฟเพื่อดูค่า</span><span data-lang-en>Hover the chart to inspect values</span></div>
+        </div>
+        <div class="chart-legend">
+          <div><span class="dot dot-price"></span>
+            <span data-lang-th>ราคาปิด</span><span data-lang-en>Close price</span>
+          </div>
+          <div><span class="dot dot-rsi"></span>RSI</div>
+          <div><span class="dot dot-ob"></span>
+            <span data-lang-th>Overbought 70</span><span data-lang-en>Overbought 70</span>
+          </div>
+          <div><span class="dot dot-os"></span>
+            <span data-lang-th>Oversold 30</span><span data-lang-en>Oversold 30</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Signal Interpretation -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🎯 การตีความ Signal ในทางปฏิบัติ</span>
+          <span data-lang-en>🎯 Practical Signal Interpretation</span>
+        </h2>
+        <p>
+          <span data-lang-th>การใช้ RSI ไม่ได้มีแค่ "เกิน 70 = ขาย" เท่านั้น · มี signal หลายแบบที่ให้ข้อมูลลึกกว่า</span>
+          <span data-lang-en>RSI isn't just "above 70 = sell" · several deeper signal types exist.</span>
+        </p>
+
+        <div class="signal-grid">
+          <div class="signal-card bull">
+            <div class="signal-diagram" data-diag="oversold"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Oversold Bounce</span><span data-lang-en>Oversold Bounce</span></h3>
+              <p>
+                <span data-lang-th>RSI ตกต่ำกว่า 30 แล้วเด้งกลับเหนือ 30 · มักเป็นจุดที่แรงขายอ่อน และ<em>อาจ</em>เกิดการรีบาวด์</span>
+                <span data-lang-en>RSI drops below 30 then crosses back above · selling pressure easing, possible bounce setup.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="signal-card bear">
+            <div class="signal-diagram" data-diag="overbought"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Overbought Exhaustion</span><span data-lang-en>Overbought Exhaustion</span></h3>
+              <p>
+                <span data-lang-th>RSI พุ่งเกิน 70 แล้วตัดกลับลง · แรงซื้ออาจเริ่มหมด โอกาสพักฐานหรือย่อตัว</span>
+                <span data-lang-en>RSI rises above 70 then crosses back down · buying may be exhausted, pullback possible.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="signal-card">
+            <div class="signal-diagram" data-diag="centerline"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Centerline Cross (50)</span><span data-lang-en>Centerline Cross (50)</span></h3>
+              <p>
+                <span data-lang-th>ตัดผ่าน 50 ขึ้น = โมเมนตัมฝั่งขึ้น · ตัดลง = ฝั่งลง · ใช้เป็น trend bias filter ได้ดี</span>
+                <span data-lang-en>Crossing 50 up = bullish momentum bias · crossing down = bearish bias · useful as a trend filter.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="signal-card bull">
+            <div class="signal-diagram" data-diag="bull-div"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Bullish Divergence</span><span data-lang-en>Bullish Divergence</span></h3>
+              <p>
+                <span data-lang-th>
+                  ราคาทำ Low ต่ำลง <em>แต่</em> RSI ทำ Low สูงขึ้น · สัญญาณว่าแรงลงเริ่มอ่อน โอกาสกลับตัวขึ้น
+                </span>
+                <span data-lang-en>
+                  Price makes a lower low <em>but</em> RSI makes a higher low · downside momentum weakening, possible reversal up.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="signal-card bear">
+            <div class="signal-diagram" data-diag="bear-div"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Bearish Divergence</span><span data-lang-en>Bearish Divergence</span></h3>
+              <p>
+                <span data-lang-th>
+                  ราคาทำ High สูงขึ้น <em>แต่</em> RSI ทำ High ต่ำลง · แรงขึ้นอ่อนลง โอกาสกลับตัวลง
+                </span>
+                <span data-lang-en>
+                  Price makes a higher high <em>but</em> RSI makes a lower high · upside momentum weakening, possible reversal down.
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div class="signal-card">
+            <div class="signal-diagram" data-diag="failure"></div>
+            <div class="signal-body">
+              <h3><span data-lang-th>Failure Swing</span><span data-lang-en>Failure Swing</span></h3>
+              <p>
+                <span data-lang-th>
+                  RSI ไปแตะ &gt;70 ลงมา แล้วเด้งขึ้นแต่<em>ไม่</em>ทำจุดสูงใหม่ · Wilder เรียกว่า Failure Swing — signal กลับตัวที่แข็งกว่า
+                </span>
+                <span data-lang-en>
+                  RSI hits &gt;70, pulls back, rebounds but <em>fails</em> to make a new high · Wilder called this a Failure Swing — a stronger reversal signal.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Caveats -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>⚠️ ข้อควรระวัง</span>
+          <span data-lang-en>⚠️ Caveats</span>
+        </h2>
+        <ul class="examples">
+          <li>
+            <strong>📈 <span data-lang-th>ใน trend แรง RSI ค้างได้นาน</span><span data-lang-en>In strong trends, RSI can stay extreme</span>:</strong>
+            <span data-lang-th>ขาขึ้นแรง RSI อาจค้าง &gt;70 เป็นสัปดาห์ การเข้า short ทุกครั้งที่เกิน 70 → โดนชน stop ซ้ำ</span>
+            <span data-lang-en>A strong uptrend can keep RSI &gt;70 for weeks · shorting every cross will get stopped out repeatedly.</span>
+          </li>
+          <li>
+            <strong>🔀 <span data-lang-th>Divergence อาจ "หลอก"</span><span data-lang-en>Divergences can fail</span>:</strong>
+            <span data-lang-th>เกิด divergence หลายรอบก่อนจะกลับตัวจริง · ใช้ร่วมกับ support/resistance หรือ price action ช่วยกรอง</span>
+            <span data-lang-en>Divergences often repeat before the real reversal · combine with support/resistance or price action for filtering.</span>
+          </li>
+          <li>
+            <strong>⏱ <span data-lang-th>Timeframe สำคัญ</span><span data-lang-en>Timeframe matters</span>:</strong>
+            <span data-lang-th>RSI บน 5-minute กับ daily เล่าคนละเรื่อง · trader ระยะสั้นและระยะยาวต้องดูคนละ period</span>
+            <span data-lang-en>5-minute RSI and daily RSI tell different stories · intraday and swing traders should use different periods.</span>
+          </li>
+          <li>
+            <strong>🧩 <span data-lang-th>RSI ไม่ใช่ทุกอย่าง</span><span data-lang-en>RSI isn't enough by itself</span>:</strong>
+            <span data-lang-th>รวมกับ volume, moving averages, หรือ candlestick patterns จะให้ภาพรวมที่ดีกว่า</span>
+            <span data-lang-en>Combine with volume, moving averages, or candlestick patterns for a more complete picture.</span>
+          </li>
+          <li>
+            <strong>🎚 <span data-lang-th>ปรับเกณฑ์ตามสินทรัพย์</span><span data-lang-en>Tune thresholds per asset</span>:</strong>
+            <span data-lang-th>หุ้นผันผวนสูง อาจใช้ 80/20 แทน 70/30 · สินทรัพย์ trend แรง อาจใช้ 60/40 เป็น bias filter</span>
+            <span data-lang-en>For volatile assets use 80/20; for trending assets 60/40 can serve as a bias filter instead of overbought/oversold.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section footer-note">
+        <p style="font-size:13px;color:var(--muted)">
+          <span data-lang-th>📘 แซนด์บ็อกซ์นี้สร้างเพื่อการเรียนรู้ · ข้อมูลราคาทั้งหมดเป็นตัวอย่างสังเคราะห์ที่สร้างจาก seeded random walk ไม่ใช่ข้อมูลจริง</span>
+          <span data-lang-en>📘 Educational sandbox · All price data is synthetic, generated from a seeded random walk — not real market data.</span>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
