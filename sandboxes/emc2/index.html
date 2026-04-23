@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>E = mc² · MySandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" title="Back">←</a>
+      <div class="topbar__brand">E = mc²</div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn" title="Toggle language">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>ความสัมพันธ์ของมวลและพลังงาน</span>
+          <span data-lang-en>The Mass–Energy Relation</span>
+        </h1>
+        <div class="sub">
+          <span data-lang-th>สมการที่ตีความใหม่ว่า "มวลคือพลังงานในรูปที่เก็บไว้"</span>
+          <span data-lang-en>The equation that says: "mass is energy, stored."</span>
+        </div>
+      </div>
+
+      <!-- Section 1: The equation -->
+      <section class="section">
+        <div class="equation">E = mc²</div>
+        <div class="equation-legend">
+          <div>
+            <span class="sym">E</span>
+            <span data-lang-th>= พลังงาน (จูล, J)</span>
+            <span data-lang-en>= energy (joules, J)</span>
+          </div>
+          <div>
+            <span class="sym">m</span>
+            <span data-lang-th>= มวล (กิโลกรัม, kg)</span>
+            <span data-lang-en>= mass (kilograms, kg)</span>
+          </div>
+          <div>
+            <span class="sym">c</span>
+            <span data-lang-th>= ความเร็วแสง = 299,792,458 m/s</span>
+            <span data-lang-en>= speed of light = 299,792,458 m/s</span>
+          </div>
+        </div>
+        <p style="margin-top:16px">
+          <span data-lang-th>ค่า c² มหาศาล (≈ 9×10¹⁶) ทำให้มวลเพียงเล็กน้อยเก็บพลังงานไว้มโหฬาร</span>
+          <span data-lang-en>Because c² is enormous (≈ 9×10¹⁶), even a tiny mass stores a gigantic amount of energy.</span>
+        </p>
+      </section>
+
+      <!-- Section 2: Interactive calculator -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🎛 ลองแปลงมวลเป็นพลังงาน</span>
+          <span data-lang-en>🎛 Try converting mass to energy</span>
+        </h2>
+
+        <div class="calc">
+          <div class="slider-row">
+            <label>
+              <span data-lang-th>มวล</span>
+              <span data-lang-en>Mass</span>
+            </label>
+            <input type="range" id="mass-slider" min="-6" max="6" step="0.1" value="0" />
+            <div class="mass-display">
+              <span id="mass-value">1</span>
+              <select id="mass-unit">
+                <option value="1">kg</option>
+                <option value="0.001">g</option>
+                <option value="0.000001">mg</option>
+                <option value="1000">ton</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="result-grid">
+            <div class="result">
+              <div class="result-label">
+                <span data-lang-th>พลังงาน</span>
+                <span data-lang-en>Energy</span>
+              </div>
+              <div class="result-value" id="energy-j">—</div>
+              <div class="result-unit">J</div>
+            </div>
+            <div class="result">
+              <div class="result-label">
+                <span data-lang-th>เทียบเท่า TNT</span>
+                <span data-lang-en>TNT equivalent</span>
+              </div>
+              <div class="result-value" id="energy-tnt">—</div>
+              <div class="result-unit" id="tnt-unit">kt</div>
+            </div>
+            <div class="result">
+              <div class="result-label">
+                <span data-lang-th>พลังงานไฟฟ้าบ้าน</span>
+                <span data-lang-en>Household power</span>
+              </div>
+              <div class="result-value" id="energy-home">—</div>
+              <div class="result-unit">
+                <span data-lang-th>บ้าน·ปี</span>
+                <span data-lang-en>homes·year</span>
+              </div>
+            </div>
+            <div class="result">
+              <div class="result-label">
+                <span data-lang-th>เทียบกับ Hiroshima</span>
+                <span data-lang-en>vs. Hiroshima</span>
+              </div>
+              <div class="result-value" id="energy-hiro">—</div>
+              <div class="result-unit">×</div>
+            </div>
+          </div>
+
+          <p class="hint">
+            <span data-lang-th>ลาก slider เพื่อเปลี่ยนมวล · ค่าคำนวณสมมติว่าแปลงมวลเป็นพลังงาน 100%</span>
+            <span data-lang-en>Drag the slider to change mass · Values assume 100% mass-to-energy conversion.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 3: Visualization -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>✨ การมองเห็น: มวลกลายเป็นแสง</span>
+          <span data-lang-en>✨ Visualization: mass turning into light</span>
+        </h2>
+        <p>
+          <span data-lang-th>กดปุ่มเพื่อจุดระเบิด: มวลจะถูกแปลงเป็นโฟตอน (แสง) พุ่งออกทุกทิศทาง</span>
+          <span data-lang-en>Click to annihilate: mass is converted into photons radiating outward.</span>
+        </p>
+        <canvas id="anim" width="720" height="360"></canvas>
+        <div class="anim-controls">
+          <button id="anim-trigger" class="btn-primary">
+            <span data-lang-th>💥 ปล่อยพลังงาน</span>
+            <span data-lang-en>💥 Release energy</span>
+          </button>
+          <button id="anim-reset" class="btn-secondary">
+            <span data-lang-th>รีเซ็ต</span>
+            <span data-lang-en>Reset</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Section 4: Particle table -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🔬 อนุภาคและพลังงานสมมูล</span>
+          <span data-lang-en>🔬 Particles and their rest energy</span>
+        </h2>
+        <p>
+          <span data-lang-th>คลิกแถวเพื่อดูแถบพลังงานเทียบกัน (mass × c² → แสดงเป็น MeV)</span>
+          <span data-lang-en>Click a row to compare rest energies on the bar (mass × c² → shown in MeV).</span>
+        </p>
+        <div class="particle-wrap">
+          <table class="particle-table" id="particle-table">
+            <thead>
+              <tr>
+                <th><span data-lang-th>อนุภาค</span><span data-lang-en>Particle</span></th>
+                <th><span data-lang-th>มวล (kg)</span><span data-lang-en>Mass (kg)</span></th>
+                <th><span data-lang-th>พลังงานนิ่ง</span><span data-lang-en>Rest energy</span></th>
+                <th><span data-lang-th>หมายเหตุ</span><span data-lang-en>Note</span></th>
+              </tr>
+            </thead>
+            <tbody id="particle-body"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 5: Real examples -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🌍 ตัวอย่างจากโลกจริง</span>
+          <span data-lang-en>🌍 Real-world examples</span>
+        </h2>
+        <ul class="examples">
+          <li>
+            <strong>☀️ <span data-lang-th>ดวงอาทิตย์</span><span data-lang-en>The Sun</span>:</strong>
+            <span data-lang-th>แปลงมวลเป็นพลังงาน ≈ 4.26 ล้านตัน/วินาที ผ่านปฏิกิริยาฟิวชัน</span>
+            <span data-lang-en>converts ≈ 4.26 million tons of mass into energy per second via fusion.</span>
+          </li>
+          <li>
+            <strong>💣 <span data-lang-th>ระเบิดฮิโรชิมา</span><span data-lang-en>Hiroshima bomb</span>:</strong>
+            <span data-lang-th>ปล่อยพลังงาน 15 kt — เทียบเท่าการแปลงมวลเพียง ≈ 0.7 กรัม</span>
+            <span data-lang-en>released 15 kt — equivalent to converting only ≈ 0.7 grams of mass.</span>
+          </li>
+          <li>
+            <strong>⚛️ <span data-lang-th>ปฏิกิริยานิวเคลียร์</span><span data-lang-en>Nuclear reactions</span>:</strong>
+            <span data-lang-th>ฟิชชัน/ฟิวชัน แปลงมวลเพียง ~0.1-0.7% แต่ได้พลังงานมหาศาล</span>
+            <span data-lang-en>fission/fusion converts just 0.1–0.7% of mass, yet releases enormous energy.</span>
+          </li>
+          <li>
+            <strong>✨ <span data-lang-th>ปฏิสสาร</span><span data-lang-en>Antimatter</span>:</strong>
+            <span data-lang-th>1 กรัมของสสาร + 1 กรัมของปฏิสสาร → พลังงาน ≈ 43 kt TNT (แปลง 100%)</span>
+            <span data-lang-en>1 g of matter + 1 g of antimatter → ≈ 43 kt of TNT (100% conversion).</span>
+          </li>
+          <li>
+            <strong>💊 <span data-lang-th>ยาสักเม็ด</span><span data-lang-en>A single pill</span>:</strong>
+            <span data-lang-th>1 กรัม เก็บพลังงานเทียบเท่าประมาณ 25 ล้านกิโลวัตต์-ชั่วโมง</span>
+            <span data-lang-en>1 gram holds ≈ 25 million kWh of energy.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section footer-note">
+        <p style="font-size:13px;color:var(--muted)">
+          <span data-lang-th>📘 แซนด์บ็อกซ์นี้สร้างเพื่อการเรียนรู้ · ค่าและภาพแสดงแบบประมาณ</span>
+          <span data-lang-en>📘 Educational sandbox · Values and animations are approximate.</span>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

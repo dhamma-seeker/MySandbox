@@ -1,0 +1,39 @@
+{
+  "sandboxes": [
+    {
+      "id": "emc2",
+      "slug": "emc2",
+      "path": "sandboxes/emc2/index.html",
+      "icon": "⚡",
+      "title": { "th": "E = mc²", "en": "E = mc²" },
+      "subtitle": {
+        "th": "ความสัมพันธ์ มวล พลังงาน และแสง",
+        "en": "Mass, Energy, and the Speed of Light"
+      },
+      "description": {
+        "th": "ทดลองเปลี่ยนมวลเป็นพลังงาน ดูอนุภาคและตัวอย่างจากชีวิตจริง",
+        "en": "Convert mass to energy interactively, explore particles and real-world examples."
+      },
+      "tags": ["physics", "relativity", "ฟิสิกส์"]
+    },
+    {
+      "id": "candlestick-patterns",
+      "slug": "candlestick-patterns",
+      "path": "sandboxes/candlestick-patterns/index.html",
+      "icon": "🕯️",
+      "title": {
+        "th": "กราฟแท่งเทียน",
+        "en": "Candlestick Patterns"
+      },
+      "subtitle": {
+        "th": "25 รูปแบบที่ใช้วิเคราะห์ตลาดการเงิน",
+        "en": "25 chart patterns for market analysis"
+      },
+      "description": {
+        "th": "เรียนรู้รูปแบบแท่งเทียน ตั้งแต่ Doji ถึง Morning Star พร้อม quiz ทดสอบ",
+        "en": "Learn candlestick patterns from Doji to Morning Star, with an interactive quiz."
+      },
+      "tags": ["finance", "trading", "การเงิน"]
+    }
+  ]
+}

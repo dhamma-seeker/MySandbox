@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Candlestick Patterns · MySandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" title="Back">←</a>
+      <div class="topbar__brand">
+        <span data-lang-th>กราฟแท่งเทียน</span>
+        <span data-lang-en>Candlestick Patterns</span>
+      </div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn" title="Toggle language">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>รูปแบบกราฟแท่งเทียน</span>
+          <span data-lang-en>Candlestick Chart Patterns</span>
+        </h1>
+        <div class="sub">
+          <span data-lang-th>เครื่องมือวิเคราะห์ทางเทคนิคที่สะท้อนอารมณ์ของตลาด</span>
+          <span data-lang-en>Technical analysis tools that reflect market sentiment</span>
+        </div>
+      </div>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <strong>⚠️
+          <span data-lang-th>คำเตือน:</span>
+          <span data-lang-en>Disclaimer:</span>
+        </strong>
+        <span data-lang-th>เนื้อหานี้จัดทำเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน การลงทุนมีความเสี่ยง ผู้ลงทุนควรศึกษาข้อมูลก่อนตัดสินใจ</span>
+        <span data-lang-en>This content is for educational purposes only, not investment advice. Trading involves risk — do your own research before investing.</span>
+      </div>
+
+      <!-- Section 1: Anatomy -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🕯️ กายวิภาคของแท่งเทียน</span>
+          <span data-lang-en>🕯️ Anatomy of a Candlestick</span>
+        </h2>
+        <p>
+          <span data-lang-th>แท่งเทียนหนึ่งแท่งแสดงข้อมูลราคา 4 ค่าในช่วงเวลาหนึ่ง: เปิด (O), สูงสุด (H), ต่ำสุด (L), ปิด (C)</span>
+          <span data-lang-en>A single candlestick shows four price values in a time interval: Open (O), High (H), Low (L), Close (C).</span>
+        </p>
+        <div id="anatomy-area"></div>
+        <div class="anatomy-legend">
+          <div><span class="dot bull"></span>
+            <span data-lang-th>แท่งเขียว (Bullish): ราคาปิดสูงกว่าราคาเปิด</span>
+            <span data-lang-en>Green candle (Bullish): close is higher than open</span>
+          </div>
+          <div><span class="dot bear"></span>
+            <span data-lang-th>แท่งแดง (Bearish): ราคาปิดต่ำกว่าราคาเปิด</span>
+            <span data-lang-en>Red candle (Bearish): close is lower than open</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Interactive builder -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🎛 สร้างแท่งเทียนเอง</span>
+          <span data-lang-en>🎛 Build your own candlestick</span>
+        </h2>
+        <p>
+          <span data-lang-th>ลองปรับค่า OHLC เพื่อดูว่าตัวเลขต่างกันทำให้รูปร่างแท่งเทียนเปลี่ยนอย่างไร</span>
+          <span data-lang-en>Adjust OHLC values to see how they change the candle shape.</span>
+        </p>
+        <div class="builder">
+          <div class="builder-chart" id="builder-chart"></div>
+          <div class="builder-controls">
+            <div class="control-row">
+              <label>Open (O)</label>
+              <input type="range" id="input-o" min="10" max="90" value="45" step="1" />
+              <span id="val-o" class="val">45</span>
+            </div>
+            <div class="control-row">
+              <label>High (H)</label>
+              <input type="range" id="input-h" min="10" max="90" value="65" step="1" />
+              <span id="val-h" class="val">65</span>
+            </div>
+            <div class="control-row">
+              <label>Low (L)</label>
+              <input type="range" id="input-l" min="10" max="90" value="35" step="1" />
+              <span id="val-l" class="val">35</span>
+            </div>
+            <div class="control-row">
+              <label>Close (C)</label>
+              <input type="range" id="input-c" min="10" max="90" value="55" step="1" />
+              <span id="val-c" class="val">55</span>
+            </div>
+            <div class="builder-verdict" id="builder-verdict"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galleries -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🟨 แท่งเดียว (Single Candle Patterns)</span>
+          <span data-lang-en>🟨 Single Candle Patterns</span>
+        </h2>
+        <p>
+          <span data-lang-th>คลิกการ์ดเพื่อดูรายละเอียด บริบทกราฟ และจิตวิทยาเบื้องหลัง</span>
+          <span data-lang-en>Click a card to see details, chart context, and market psychology.</span>
+        </p>
+        <div id="gallery-single" class="pattern-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span data-lang-th>🟦 สองแท่ง (Two-Candle Patterns)</span>
+          <span data-lang-en>🟦 Two-Candle Patterns</span>
+        </h2>
+        <div id="gallery-two" class="pattern-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span data-lang-th>🟪 สามแท่ง (Three-Candle Patterns)</span>
+          <span data-lang-en>🟪 Three-Candle Patterns</span>
+        </h2>
+        <div id="gallery-three" class="pattern-grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>
+          <span data-lang-th>🟧 Continuation (ต่อเนื่องเทรนด์)</span>
+          <span data-lang-en>🟧 Continuation Patterns</span>
+        </h2>
+        <div id="gallery-cont" class="pattern-grid"></div>
+      </section>
+
+      <!-- Quiz -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🎯 แบบทดสอบ: ระบุรูปแบบ</span>
+          <span data-lang-en>🎯 Quiz: Identify the Pattern</span>
+        </h2>
+        <p>
+          <span data-lang-th>ดูกราฟและเลือกชื่อรูปแบบที่ตรง</span>
+          <span data-lang-en>Look at the chart and pick the matching pattern.</span>
+        </p>
+        <div class="quiz">
+          <div class="quiz-stats">
+            <div>
+              <span class="stat-label"><span data-lang-th>คะแนน</span><span data-lang-en>Score</span></span>
+              <span class="stat-value" id="quiz-score">0 / 0</span>
+            </div>
+            <div>
+              <span class="stat-label"><span data-lang-th>ความแม่น</span><span data-lang-en>Accuracy</span></span>
+              <span class="stat-value" id="quiz-accuracy">—</span>
+            </div>
+            <div>
+              <span class="stat-label"><span data-lang-th>ต่อเนื่อง</span><span data-lang-en>Streak</span></span>
+              <span class="stat-value" id="quiz-streak">0</span>
+            </div>
+            <div>
+              <span class="stat-label"><span data-lang-th>สูงสุด</span><span data-lang-en>Best</span></span>
+              <span class="stat-value" id="quiz-best">0</span>
+            </div>
+            <button class="btn-secondary" id="quiz-reset">
+              <span data-lang-th>ล้างสถิติ</span>
+              <span data-lang-en>Reset stats</span>
+            </button>
+          </div>
+          <div class="quiz-chart" id="quiz-chart"></div>
+          <div class="quiz-options" id="quiz-options"></div>
+          <div class="quiz-feedback" id="quiz-feedback"></div>
+          <button class="btn-primary" id="quiz-next" style="display:none;">
+            <span data-lang-th>ข้อถัดไป →</span>
+            <span data-lang-en>Next question →</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Tips -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>💡 ข้อควรระวังในการใช้งาน</span>
+          <span data-lang-en>💡 Practical Cautions</span>
+        </h2>
+        <ul class="tips">
+          <li>
+            <strong><span data-lang-th>บริบทสำคัญกว่ารูปร่าง:</span><span data-lang-en>Context beats shape:</span></strong>
+            <span data-lang-th>Hammer ที่ไม่อยู่ในเทรนด์ขาลง = ไม่ใช่ Hammer ที่ใช้งานได้</span>
+            <span data-lang-en>A Hammer not preceded by a downtrend isn't an actionable Hammer.</span>
+          </li>
+          <li>
+            <strong><span data-lang-th>ยืนยันด้วยแท่งถัดไป:</span><span data-lang-en>Confirm with follow-through:</span></strong>
+            <span data-lang-th>สัญญาณกลับตัวจะน่าเชื่อถือขึ้นเมื่อมีแท่งถัดไปยืนยันทิศทาง</span>
+            <span data-lang-en>Reversal signals gain reliability when the next candle confirms direction.</span>
+          </li>
+          <li>
+            <strong><span data-lang-th>ดู Volume ประกอบ:</span><span data-lang-en>Watch the volume:</span></strong>
+            <span data-lang-th>Engulfing ที่มาพร้อม volume สูงน่าเชื่อถือกว่า volume ต่ำ</span>
+            <span data-lang-en>An Engulfing pattern with high volume is more reliable than one with low volume.</span>
+          </li>
+          <li>
+            <strong><span data-lang-th>ใช้ร่วมกับเครื่องมืออื่น:</span><span data-lang-en>Combine with other tools:</span></strong>
+            <span data-lang-th>แนวรับ/แนวต้าน, RSI, Moving Average ช่วยเพิ่มความน่าเชื่อถือ</span>
+            <span data-lang-en>Support/resistance, RSI, and moving averages add confirmation.</span>
+          </li>
+          <li>
+            <strong><span data-lang-th>สัญญาณหลอกมีเสมอ:</span><span data-lang-en>False signals exist:</span></strong>
+            <span data-lang-th>ไม่มีรูปแบบใดใช้ได้ 100% ต้องมีการจัดการความเสี่ยง (stop-loss) เสมอ</span>
+            <span data-lang-en>No pattern is 100% reliable — always use risk management (stop-loss).</span>
+          </li>
+          <li>
+            <strong><span data-lang-th>Timeframe สำคัญ:</span><span data-lang-en>Timeframes matter:</span></strong>
+            <span data-lang-th>Pattern บน Daily/Weekly น่าเชื่อถือกว่า 1-minute เพราะ noise น้อยกว่า</span>
+            <span data-lang-en>Patterns on Daily/Weekly charts are more reliable than 1-minute charts (less noise).</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section footer-note">
+        <p style="font-size:13px;color:var(--muted)">
+          <span data-lang-th>📘 แซนด์บ็อกซ์นี้เพื่อการเรียนรู้ — ไม่ใช่คำแนะนำการลงทุน กราฟ context สร้างเป็นตัวอย่างและไม่สะท้อนข้อมูลตลาดจริง</span>
+          <span data-lang-en>📘 Educational sandbox — not investment advice. Context charts are illustrative and do not reflect real market data.</span>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Pattern detail modal -->
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div class="modal" id="pattern-modal" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="modal-title"></h3>
+      <button class="icon-btn" id="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

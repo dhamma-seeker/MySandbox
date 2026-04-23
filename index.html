@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>MySandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__brand">MySandbox</div>
+    <div class="topbar__actions">
+      <button class="lang-btn" title="Toggle language">EN</button>
+      <button class="icon-btn menu-btn" title="Menu" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="feed" id="feed"></main>
+
+  <div class="scroll-hint">
+    <span data-lang-th>เลื่อนลง ↓</span>
+    <span data-lang-en>Scroll ↓</span>
+  </div>
+
+  <div class="backdrop" id="backdrop"></div>
+  <aside class="drawer" id="drawer" aria-label="Sandbox menu">
+    <div class="drawer__header">
+      <div class="drawer__title">
+        <span data-lang-th>เมนูหัวข้อ</span>
+        <span data-lang-en>Topics</span>
+      </div>
+      <button class="icon-btn drawer-close" aria-label="Close menu">✕</button>
+    </div>
+    <div class="drawer__list" id="drawer-list"></div>
+  </aside>
+
+  <script type="module" src="assets/shell.js"></script>
+</body>
+</html>

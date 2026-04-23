@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=MySandbox
+Name[th]=MySandbox
+GenericName=Interactive Learning Sandbox
+Comment=Start the MySandbox learning server and open in browser
+Comment[th]=เริ่มเซิร์ฟเวอร์ MySandbox และเปิดในเบราว์เซอร์
+Exec=bash -c 'cd "/home/rungrots/พื้นโต๊ะ/MySandbox" && ./start.sh'
+Icon=applications-science
+Terminal=true
+Categories=Education;Science;
+StartupNotify=true
