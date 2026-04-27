@@ -1,0 +1,498 @@
+/* ============================================================
+   Elliott Wave sandbox
+   ============================================================ */
+:root {
+  --imp-color: #2563eb;
+  --imp-soft: #dbeafe;
+  --corr-color: #dc2626;
+  --corr-soft: #fee2e2;
+  --good: #16a34a;
+  --good-soft: #dcfce7;
+  --bad: #dc2626;
+  --bad-soft: #fee2e2;
+  --warn: #d97706;
+  --warn-soft: #fef3c7;
+}
+
+.section--note { background: #fafafa; }
+.callout {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  padding: 14px 16px;
+  border-radius: 8px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout.warn {
+  background: var(--warn-soft);
+  border-left-color: var(--warn);
+  margin-top: 16px;
+}
+.callout ul, .rules-box ol, .caveats {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+.callout li, .rules-box li, .caveats li { margin: 6px 0; line-height: 1.5; color: var(--text-soft); }
+.muted { color: var(--muted); }
+
+/* ============ Wave 5-3 diagram (Section 2) ============ */
+.wave-diagram-wrap {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 12px 0;
+}
+.wave-diagram { width: 100%; height: auto; display: block; }
+.wv-dots circle {
+  fill: var(--imp-color);
+  stroke: white;
+  stroke-width: 2;
+  cursor: pointer;
+  transition: r 0.15s, fill 0.15s;
+}
+.wv-dots circle.wv-corr { fill: var(--corr-color); }
+.wv-dots circle:hover, .wv-dots circle.active { r: 9; }
+.wv-dots circle.active { filter: drop-shadow(0 0 6px rgba(37,99,235,0.5)); }
+
+.wave-psy {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  min-height: 84px;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.wave-psy__hint { color: var(--muted); font-style: italic; }
+.wave-psy__title {
+  font-weight: 700;
+  color: var(--imp-color);
+  margin-bottom: 4px;
+}
+.wave-psy__title.corr { color: var(--corr-color); }
+.wave-psy__phase { color: var(--muted); font-size: 12px; margin-left: 8px; font-weight: 500; }
+
+/* Rules box */
+.rules-box {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.rules-box h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: #9a3412;
+}
+.rules-box ol { padding-left: 22px; }
+
+/* ============ Wave Degrees Table (Section 3) ============ */
+.degrees-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-top: 8px;
+}
+.degrees-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 560px;
+}
+.degrees-table th, .degrees-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.degrees-table th {
+  background: #fafafa;
+  font-weight: 600;
+  color: var(--text-soft);
+  font-size: 13px;
+}
+.degrees-table tr:last-child td { border-bottom: none; }
+.degrees-table .deg-name { font-weight: 600; }
+.degrees-table .deg-not {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--imp-color);
+  font-weight: 500;
+}
+.degrees-table .deg-not--corr { color: var(--corr-color); }
+.degrees-table tr {
+  border-left: 4px solid transparent;
+}
+
+/* ============ Wave Builder (Section 4) ============ */
+.builder {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 12px;
+}
+.builder__canvas-wrap {
+  position: relative;
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+}
+#builderCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+#builderCanvas:active { cursor: grabbing; }
+.builder__hint {
+  position: absolute;
+  bottom: 12px; right: 14px;
+  font-size: 12px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.85);
+  padding: 4px 10px;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+/* sliders for mobile */
+.builder__sliders {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+.builder__sliders label {
+  display: grid;
+  grid-template-columns: 70px 1fr 50px;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+.builder__sliders label span:first-child { font-weight: 600; }
+.builder__sliders input[type=range] { width: 100%; accent-color: var(--imp-color); }
+.builder__sliders output { color: var(--muted); font-size: 12px; text-align: right; }
+
+@media (max-width: 720px) {
+  .builder__canvas-wrap { padding: 4px; }
+  .builder__hint { display: none; }
+  .builder__sliders { display: flex; }
+}
+
+.builder__rules {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.rule-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+.rule-pill__icon { font-size: 18px; line-height: 1; }
+.rule-pill__text { flex: 1; line-height: 1.4; }
+.rule-pill.ok    { background: var(--good-soft); border-color: #86efac; color: #14532d; }
+.rule-pill.fail  { background: var(--bad-soft);  border-color: #fca5a5; color: #7f1d1d; }
+
+.btn-secondary {
+  align-self: flex-start;
+  padding: 9px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+.btn-secondary:hover { background: var(--border); }
+
+/* ============ Fractal (Section 5) ============ */
+.fractal-wrap {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 8px;
+}
+#fractalSvg { width: 100%; height: auto; display: block; }
+.fractal-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+.fractal-level {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  margin-left: auto;
+}
+.frac-line { fill: none; stroke-width: 2; }
+.frac-dot  { stroke: white; stroke-width: 1.5; }
+.frac-label { font-size: 11px; font-weight: 600; }
+
+/* ============ Fibonacci (Section 6) ============ */
+.fib-wrap {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 8px;
+}
+#fibSvg { width: 100%; height: auto; display: block; }
+.fib-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+.fib-controls label {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  gap: 4px 12px;
+  align-items: center;
+  font-size: 13px;
+}
+.fib-controls label span { grid-column: 1; font-weight: 500; }
+.fib-controls label input { grid-column: 1 / span 2; accent-color: var(--accent); }
+.fib-controls label output {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  text-align: right;
+}
+.fib-cheatsheet {
+  background: var(--accent-soft);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  font-size: 13px;
+}
+.fib-cheatsheet h3 { font-size: 14px; margin-bottom: 6px; color: var(--accent); }
+.fib-cheatsheet ul { padding-left: 18px; }
+.fib-cheatsheet li { margin: 3px 0; }
+
+/* ============ Variant grid (Section 7) ============ */
+.variant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.variant-card {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.variant-card__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--imp-color);
+  margin-bottom: 2px;
+}
+.variant-card__title.corr { color: var(--corr-color); }
+.variant-card__sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.variant-card svg {
+  width: 100%;
+  height: auto;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+.variant-card__desc {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.5;
+  margin-top: 10px;
+}
+.var-line { fill: none; stroke-width: 2; }
+.var-dot { stroke: white; stroke-width: 1.5; }
+.var-label { font-size: 10px; font-weight: 700; }
+
+/* ============ Flashcard quiz (Section 8) ============ */
+.quiz {
+  margin-top: 12px;
+}
+.quiz__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.quiz__stat {
+  background: #fafafa;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.quiz__stat-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.quiz__stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text);
+}
+
+.flashcard {
+  perspective: 1200px;
+  width: 100%;
+  height: 240px;
+  margin-bottom: 12px;
+  outline: none;
+}
+.flashcard__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.55s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.flashcard.flipped .flashcard__inner { transform: rotateY(180deg); }
+.flashcard__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 14px;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: var(--shadow);
+}
+.flashcard__face--front {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+}
+.flashcard__face--back {
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: white;
+  transform: rotateY(180deg);
+}
+.flashcard__badge {
+  position: absolute;
+  top: 14px; left: 16px;
+  background: rgba(255,255,255,0.18);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.flashcard__text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.flashcard__face--back .flashcard__text {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+.flashcard__hint {
+  position: absolute;
+  bottom: 14px; right: 18px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+}
+
+.quiz__actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.btn-quiz {
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+}
+.btn-quiz:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn-quiz--good { background: var(--good-soft); color: #14532d; border-color: #86efac; }
+.btn-quiz--good:not(:disabled):hover { background: #bbf7d0; }
+.btn-quiz--bad  { background: var(--bad-soft);  color: #7f1d1d; border-color: #fca5a5; }
+.btn-quiz--bad:not(:disabled):hover { background: #fecaca; }
+
+.quiz__footer {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.link-btn {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+.link-btn:hover { color: var(--text); background: #f3f4f6; }
+
+.quiz__done {
+  text-align: center;
+  padding: 24px;
+}
+.quiz__done h3 { font-size: 22px; margin-bottom: 8px; }
+.quiz__done p { color: var(--text-soft); margin-bottom: 14px; }
+.quiz__done .big { font-size: 48px; }
+
+/* ============ Footer note ============ */
+.footer-note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ============ Mobile tweaks ============ */
+@media (max-width: 540px) {
+  .quiz__stats { grid-template-columns: repeat(2, 1fr); }
+  .quiz__stat-value { font-size: 18px; }
+  .flashcard { height: 220px; }
+  .flashcard__text { font-size: 16px; }
+  .flashcard__face--back .flashcard__text { font-size: 14px; }
+  .flashcard__face { padding: 20px 18px; }
+  .quiz__actions { grid-template-columns: 1fr; }
+  .fractal-controls { flex-direction: column; align-items: stretch; }
+  .fractal-level { margin-left: 0; text-align: center; }
+}

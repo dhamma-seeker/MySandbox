@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Elliott Wave · MySandbox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" aria-label="back">←</a>
+      <div class="topbar__brand">Elliott Wave</div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>Elliott Wave 🌊</span>
+          <span data-lang-en>Elliott Wave 🌊</span>
+        </h1>
+        <p class="sub">
+          <span data-lang-th>ทฤษฎีคลื่นเอลเลียต — โครงสร้างคลื่น 5-3 จิตวิทยามวลชน และการนับคลื่นในกราฟจริง</span>
+          <span data-lang-en>Elliott Wave Theory — 5-3 wave structure, crowd psychology, and counting waves in real charts</span>
+        </p>
+      </div>
+
+      <!-- ============ Section 1: Overview ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>1. ภาพรวม &amp; จิตวิทยามวลชน</span>
+          <span data-lang-en>1. Overview &amp; Crowd Psychology</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            <strong>Ralph Nelson Elliott</strong> (สหรัฐ, 1871–1948) สังเกตในปี 1934 ว่าตลาดหุ้นไม่ได้เคลื่อนไหวสุ่ม
+            แต่เคลื่อนตาม "คลื่นซ้ำๆ" ที่สะท้อนอารมณ์มวลชน — โลภ, กลัว, หวัง, ปฏิเสธ —
+            สลับกันตามจังหวะที่คาดเดาได้
+          </span>
+          <span data-lang-en>
+            <strong>Ralph Nelson Elliott</strong> (USA, 1871–1948) discovered in 1934 that markets don't move randomly
+            — they move in repeating waves driven by crowd emotions: greed, fear, hope, denial — alternating in
+            predictable rhythms.
+          </span>
+        </p>
+        <div class="callout">
+          <strong data-lang-th>หลักการ 3 ข้อ:</strong>
+          <strong data-lang-en>3 Core Ideas:</strong>
+          <ul>
+            <li>
+              <span data-lang-th><b>1) Pattern</b> — ตลาดเคลื่อนเป็นคลื่น 5 ขึ้น (impulse) + 3 ลง (corrective)</span>
+              <span data-lang-en><b>1) Pattern</b> — markets move in 5 waves up (impulse) + 3 waves down (corrective)</span>
+            </li>
+            <li>
+              <span data-lang-th><b>2) Ratio</b> — สัดส่วนคลื่นสัมพันธ์กับ <em>Fibonacci ratios</em> (38.2%, 61.8%, 161.8%)</span>
+              <span data-lang-en><b>2) Ratio</b> — wave proportions follow <em>Fibonacci ratios</em> (38.2%, 61.8%, 161.8%)</span>
+            </li>
+            <li>
+              <span data-lang-th><b>3) Time</b> — ระยะเวลาแต่ละคลื่นก็มีความสัมพันธ์เชิง Fibonacci เช่นกัน (แต่ใช้ยืนยันรองลงมา)</span>
+              <span data-lang-en><b>3) Time</b> — wave duration also has Fibonacci relationships (used as secondary confirmation)</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ Section 2: 5-3 Pattern ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>2. โครงสร้างคลื่น 5-3 + จิตวิทยาแต่ละคลื่น</span>
+          <span data-lang-en>2. The 5-3 Wave Structure + Per-Wave Psychology</span>
+        </h2>
+        <p>
+          <span data-lang-th>โฮเวอร์/แตะแต่ละคลื่นเพื่ออ่านจิตวิทยามวลชน ณ ช่วงนั้น</span>
+          <span data-lang-en>Hover/tap each wave to see crowd psychology at that moment</span>
+        </p>
+
+        <div class="wave-diagram-wrap">
+          <svg class="wave-diagram" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet" aria-label="Elliott 5-3 pattern">
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" fill="#888" />
+              </marker>
+            </defs>
+            <!-- Grid -->
+            <line x1="40" y1="20" x2="40" y2="320" stroke="#e5e5e5" stroke-width="1"/>
+            <line x1="40" y1="320" x2="780" y2="320" stroke="#e5e5e5" stroke-width="1"/>
+            <text x="35" y="25" text-anchor="end" font-size="11" fill="#888">Price</text>
+            <text x="780" y="335" text-anchor="end" font-size="11" fill="#888">Time →</text>
+
+            <!-- Phase divider -->
+            <line x1="540" y1="20" x2="540" y2="320" stroke="#fde68a" stroke-width="1" stroke-dasharray="3 4"/>
+
+            <!-- 5-3 polyline (impulse 1-5 then corrective A-B-C, time always increases) -->
+            <polyline class="wv-line wv-impulse"
+              points="60,300 150,210 220,250 380,110 470,180 540,70
+                      610,170 680,110 760,235"
+              fill="none" stroke="#2563eb" stroke-width="2.5"/>
+
+            <!-- Wave 1 high horizontal guide (to visualize "no overlap" rule for W4) -->
+            <line x1="60" y1="210" x2="540" y2="210" stroke="#fed7aa" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="62" y="206" font-size="10" fill="#9a3412">Wave 1 high — W4 must stay above</text>
+
+            <!-- Wave dots -->
+            <g class="wv-dots">
+              <circle data-wave="0" cx="60"  cy="300" r="6"/>
+              <circle data-wave="1" cx="150" cy="210" r="7"/>
+              <circle data-wave="2" cx="220" cy="250" r="7"/>
+              <circle data-wave="3" cx="380" cy="110" r="7"/>
+              <circle data-wave="4" cx="470" cy="180" r="7"/>
+              <circle data-wave="5" cx="540" cy="70"  r="7"/>
+              <circle data-wave="A" cx="610" cy="170" r="7" class="wv-corr"/>
+              <circle data-wave="B" cx="680" cy="110" r="7" class="wv-corr"/>
+              <circle data-wave="C" cx="760" cy="235" r="7" class="wv-corr"/>
+            </g>
+
+            <!-- Wave labels -->
+            <g class="wv-labels" font-size="14" font-weight="700">
+              <text x="150" y="198" text-anchor="middle" fill="#2563eb">1</text>
+              <text x="220" y="270" text-anchor="middle" fill="#2563eb">2</text>
+              <text x="380" y="98"  text-anchor="middle" fill="#2563eb">3</text>
+              <text x="470" y="200" text-anchor="middle" fill="#2563eb">4</text>
+              <text x="540" y="58"  text-anchor="middle" fill="#2563eb">5</text>
+              <text x="618" y="166" fill="#dc2626">A</text>
+              <text x="688" y="106" fill="#dc2626">B</text>
+              <text x="754" y="252" text-anchor="end" fill="#dc2626">C</text>
+            </g>
+
+            <!-- Phase labels -->
+            <text x="290" y="345" text-anchor="middle" font-size="12" font-weight="600" fill="#2563eb">
+              Impulse (5 waves up)
+            </text>
+            <text x="660" y="345" text-anchor="middle" font-size="12" font-weight="600" fill="#dc2626">
+              Corrective (A-B-C)
+            </text>
+          </svg>
+        </div>
+
+        <div id="wavePsy" class="wave-psy">
+          <span class="wave-psy__hint" data-lang-th>← เลื่อนเมาส์/แตะจุดคลื่นเพื่อดูจิตวิทยา</span>
+          <span class="wave-psy__hint" data-lang-en>← Hover/tap a wave dot to see psychology</span>
+        </div>
+
+        <div class="rules-box">
+          <h3>
+            <span data-lang-th>กฎเหล็ก 3 ข้อของ Impulse Wave</span>
+            <span data-lang-en>3 Hard Rules of Impulse Waves</span>
+          </h3>
+          <ol>
+            <li>
+              <span data-lang-th><b>คลื่น 2</b> ต้องไม่ retrace เกิน 100% ของคลื่น 1 (ห้ามลงต่ำกว่าจุดเริ่มคลื่น 1)</span>
+              <span data-lang-en><b>Wave 2</b> must not retrace beyond 100% of Wave 1 (cannot drop below Wave 1's start)</span>
+            </li>
+            <li>
+              <span data-lang-th><b>คลื่น 3</b> ต้องไม่สั้นที่สุดในสามคลื่นขับเคลื่อน (1, 3, 5) — มักยาวที่สุด</span>
+              <span data-lang-en><b>Wave 3</b> must NOT be the shortest among waves 1, 3, 5 — usually the longest</span>
+            </li>
+            <li>
+              <span data-lang-th><b>คลื่น 4</b> ห้าม overlap เข้าไปในเขตราคาคลื่น 1 (ยกเว้น diagonal triangle)</span>
+              <span data-lang-en><b>Wave 4</b> must NOT overlap Wave 1's price territory (except in diagonals)</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Section 3: 9 Wave Degrees ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>3. 9 ระดับคลื่น (Wave Degrees)</span>
+          <span data-lang-en>3. The 9 Wave Degrees</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ธรรมชาติของ Elliott Wave คือ <b>fractal</b> — คลื่นใหญ่ประกอบด้วยคลื่นเล็ก คลื่นเล็กประกอบด้วยคลื่นเล็กกว่า
+            Elliott จัดแบ่งเป็น 9 ระดับ ใช้ notation ต่างกันเพื่อแยก degree
+          </span>
+          <span data-lang-en>
+            Elliott Wave is <b>fractal</b> — large waves are made of smaller waves, made of even smaller ones.
+            Elliott classified 9 degrees, each with distinct notation.
+          </span>
+        </p>
+        <div class="degrees-table-wrap">
+          <table class="degrees-table">
+            <thead>
+              <tr>
+                <th data-lang-th>ระดับ (Degree)</th><th data-lang-en>Degree</th>
+                <th>Impulse</th>
+                <th>Corrective</th>
+                <th data-lang-th>ระยะเวลาโดยประมาณ</th><th data-lang-en>Typical Duration</th>
+              </tr>
+            </thead>
+            <tbody id="degreesTable"><!-- filled by JS --></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ Section 4: Wave Builder ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>4. ทดลองสร้างคลื่นเอง — Wave Builder</span>
+          <span data-lang-en>4. Build Your Own Wave — Wave Builder</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ลากจุดบนกราฟ (เดสก์ท็อป) หรือเลื่อน slider (มือถือ) เพื่อกำหนดคลื่น 5 ขึ้น
+            ระบบจะตรวจกฎ 3 ข้อแบบ realtime
+          </span>
+          <span data-lang-en>
+            Drag dots (desktop) or move sliders (mobile) to set up the 5-wave impulse.
+            Rules check in realtime.
+          </span>
+        </p>
+
+        <div class="builder">
+          <div class="builder__canvas-wrap">
+            <canvas id="builderCanvas" width="720" height="380"></canvas>
+            <div class="builder__hint">
+              <span data-lang-th>💡 ลากจุดสีฟ้าได้เลย</span>
+              <span data-lang-en>💡 Drag the blue dots</span>
+            </div>
+          </div>
+          <div class="builder__sliders" id="builderSliders">
+            <!-- 6 sliders for points 1..5 (point 0 is fixed at start) -->
+          </div>
+          <div class="builder__rules" id="builderRules">
+            <!-- rule pills filled by JS -->
+          </div>
+          <button class="btn-secondary" id="builderReset">
+            <span data-lang-th>↺ รีเซ็ต</span>
+            <span data-lang-en>↺ Reset</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ============ Section 5: Fractal Zoom ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>5. ธรรมชาติ Fractal — คลื่นภายในคลื่น</span>
+          <span data-lang-en>5. Fractal Nature — Waves Within Waves</span>
+        </h2>
+        <p>
+          <span data-lang-th>กดปุ่ม Zoom เพื่อเข้าไปดูคลื่นย่อยที่ซ่อนใน Wave 3 (คลื่นใหญ่ขึ้นเป็น 5 คลื่นย่อย)</span>
+          <span data-lang-en>Click Zoom to dive into Wave 3 — see how it's made of 5 smaller sub-waves</span>
+        </p>
+        <div class="fractal-wrap">
+          <svg id="fractalSvg" viewBox="0 0 800 320" preserveAspectRatio="xMidYMid meet">
+            <!-- drawn dynamically -->
+          </svg>
+          <div class="fractal-controls">
+            <button class="btn-secondary" id="fractalZoomIn">
+              <span data-lang-th>🔍 Zoom เข้า Wave 3</span>
+              <span data-lang-en>🔍 Zoom into Wave 3</span>
+            </button>
+            <button class="btn-secondary" id="fractalZoomOut">
+              <span data-lang-th>↩ Zoom ออก</span>
+              <span data-lang-en>↩ Zoom out</span>
+            </button>
+            <span class="fractal-level" id="fractalLevel"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Section 6: Fibonacci ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>6. Fibonacci — Retracement &amp; Projection</span>
+          <span data-lang-en>6. Fibonacci — Retracement &amp; Projection</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ปรับ slider เพื่อดูว่าคลื่น 2 และ 4 มัก retrace ที่ระดับใด และคลื่น 3, 5 มี target projection ที่เท่าไร
+          </span>
+          <span data-lang-en>
+            Adjust sliders to see typical retracement levels for waves 2/4 and projection targets for waves 3/5.
+          </span>
+        </p>
+        <div class="fib-wrap">
+          <svg id="fibSvg" viewBox="0 0 800 360" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="fib-controls">
+            <label>
+              <span><span data-lang-th>Wave 2 retrace ของ Wave 1</span><span data-lang-en>Wave 2 retracement of Wave 1</span></span>
+              <input type="range" id="fibW2" min="0" max="100" value="50" step="0.1">
+              <output id="fibW2Out">50.0%</output>
+            </label>
+            <label>
+              <span><span data-lang-th>Wave 3 extension ของ Wave 1</span><span data-lang-en>Wave 3 extension of Wave 1</span></span>
+              <input type="range" id="fibW3" min="100" max="300" value="161.8" step="0.1">
+              <output id="fibW3Out">161.8%</output>
+            </label>
+            <label>
+              <span><span data-lang-th>Wave 4 retrace ของ Wave 3</span><span data-lang-en>Wave 4 retracement of Wave 3</span></span>
+              <input type="range" id="fibW4" min="0" max="60" value="38.2" step="0.1">
+              <output id="fibW4Out">38.2%</output>
+            </label>
+          </div>
+          <div class="fib-cheatsheet">
+            <h3><span data-lang-th>สัดส่วนที่พบบ่อย (Cheatsheet)</span><span data-lang-en>Common Ratios (Cheatsheet)</span></h3>
+            <ul>
+              <li><b>Wave 2:</b> 50% – 61.8% <span class="muted">(deep retrace) · 38.2% (shallow)</span></li>
+              <li><b>Wave 3:</b> 161.8% <span class="muted">(typical) · 261.8% / 423.6% (extended)</span></li>
+              <li><b>Wave 4:</b> 23.6% – 38.2% <span class="muted">(shallow alternation with W2)</span></li>
+              <li><b>Wave 5:</b> = Wave 1 length, <span class="muted">or 61.8% × (W1+W3)</span></li>
+              <li><b>Wave A:</b> 38.2% – 61.8% <span class="muted">of W5</span></li>
+              <li><b>Wave C:</b> ≈ Wave A length, <span class="muted">or 161.8% × A</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Section 7: Real Charts ≠ Textbook ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>7. ของจริงไม่ Perfect — กราฟไม่ตรงตำราก็นับได้</span>
+          <span data-lang-en>7. Real Charts ≠ Textbook — Imperfect Patterns Still Count</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ตัวอย่างในตำรามักวาดสวยเป็นรูปฟันปลาเรียบ แต่กราฟจริงในตลาดมีรูปร่างแปลกกว่ามาก
+            หัวข้อนี้แสดงตัวอย่าง pattern ที่ "ไม่ perfect" แต่ก็ยังถือว่าเป็น Elliott Wave ที่ถูกต้อง
+            <em>เพื่อไม่ให้ยึดติดกับภาพในตำรา</em>
+          </span>
+          <span data-lang-en>
+            Textbook diagrams look clean and saw-tooth-like, but real markets are messier.
+            Below are "imperfect" patterns that are STILL valid Elliott Waves —
+            <em>so you don't get fixated on idealized examples.</em>
+          </span>
+        </p>
+        <div class="variant-grid" id="variantGrid"><!-- filled by JS --></div>
+        <div class="callout warn">
+          <strong data-lang-th>⚠️ สิ่งที่นักวิเคราะห์มือใหม่มักพลาด:</strong>
+          <strong data-lang-en>⚠️ Common mistakes by beginners:</strong>
+          <ul>
+            <li><span data-lang-th>คาดหวังว่าทุกคลื่นต้องเท่ากันเป็นกระดูกปลา</span><span data-lang-en>Expecting every wave to look like a clean zig-zag</span></li>
+            <li><span data-lang-th>ลืมว่า corrective wave ซับซ้อนกว่า impulse มาก (มี ZigZag, Flat, Triangle, Combination)</span><span data-lang-en>Forgetting that corrective waves are FAR more complex than impulses (ZigZag, Flat, Triangle, Combinations)</span></li>
+            <li><span data-lang-th>นับคลื่นจากกราฟที่ noise สูงเกิน — ขยับไปใช้ TF ที่สูงขึ้น</span><span data-lang-en>Counting on a chart that's too noisy — step up to a higher timeframe</span></li>
+            <li><span data-lang-th>ดื้อกับ count เดิมเมื่อราคาขัดกฎ — ที่ถูกคือ "invalidate &amp; recount"</span><span data-lang-en>Sticking to a count after price breaks the rules — the right move is "invalidate &amp; recount"</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ Section 8: Flashcard Quiz ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>8. แบบทดสอบ Flashcard 🎴</span>
+          <span data-lang-en>8. Flashcard Quiz 🎴</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            กดบัตรเพื่อพลิกดูคำตอบ แล้วประเมินตัวเองว่า "รู้" หรือ "ยังไม่รู้"
+            ระบบจะนับคะแนน, streak ต่อเนื่อง และวนข้อที่ตอบผิดมาให้ถามซ้ำ
+          </span>
+          <span data-lang-en>
+            Tap a card to flip and see the answer, then self-grade "Knew it" or "Didn't know."
+            The game tracks your score, streak, and re-asks missed questions.
+          </span>
+        </p>
+
+        <div class="quiz" id="quiz">
+          <div class="quiz__stats">
+            <div class="quiz__stat">
+              <span class="quiz__stat-label" data-lang-th>คะแนน</span>
+              <span class="quiz__stat-label" data-lang-en>Score</span>
+              <span class="quiz__stat-value" id="qScore">0</span>
+            </div>
+            <div class="quiz__stat">
+              <span class="quiz__stat-label" data-lang-th>Streak 🔥</span>
+              <span class="quiz__stat-label" data-lang-en>Streak 🔥</span>
+              <span class="quiz__stat-value" id="qStreak">0</span>
+            </div>
+            <div class="quiz__stat">
+              <span class="quiz__stat-label" data-lang-th>Best Streak</span>
+              <span class="quiz__stat-label" data-lang-en>Best Streak</span>
+              <span class="quiz__stat-value" id="qBest">0</span>
+            </div>
+            <div class="quiz__stat">
+              <span class="quiz__stat-label" data-lang-th>เหลือ</span>
+              <span class="quiz__stat-label" data-lang-en>Left</span>
+              <span class="quiz__stat-value" id="qRemain">–</span>
+            </div>
+          </div>
+
+          <div class="flashcard" id="flashcard" tabindex="0" aria-label="flashcard">
+            <div class="flashcard__inner">
+              <div class="flashcard__face flashcard__face--front">
+                <div class="flashcard__badge" id="qBadge">Q1</div>
+                <div class="flashcard__text" id="qFront"></div>
+                <div class="flashcard__hint">
+                  <span data-lang-th>คลิกการ์ดเพื่อพลิกดูคำตอบ</span>
+                  <span data-lang-en>Click the card to reveal the answer</span>
+                </div>
+              </div>
+              <div class="flashcard__face flashcard__face--back">
+                <div class="flashcard__badge flashcard__badge--a">A</div>
+                <div class="flashcard__text" id="qBack"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quiz__actions">
+            <button class="btn-quiz btn-quiz--bad" id="qWrong">
+              <span data-lang-th>❌ ยังไม่รู้</span>
+              <span data-lang-en>❌ Didn't know</span>
+            </button>
+            <button class="btn-quiz btn-quiz--good" id="qRight">
+              <span data-lang-th>✅ รู้</span>
+              <span data-lang-en>✅ Knew it</span>
+            </button>
+          </div>
+          <div class="quiz__footer">
+            <button class="link-btn" id="qReset">
+              <span data-lang-th>↺ เริ่มใหม่ (ล้างคะแนน)</span>
+              <span data-lang-en>↺ Restart (clear score)</span>
+            </button>
+            <button class="link-btn" id="qShuffle">
+              <span data-lang-th>🔀 สลับข้อ</span>
+              <span data-lang-en>🔀 Shuffle</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Section 9: Disclaimer ============ -->
+      <section class="section section--note">
+        <h2>
+          <span data-lang-th>9. ข้อจำกัด &amp; คำเตือน</span>
+          <span data-lang-en>9. Limitations &amp; Caveats</span>
+        </h2>
+        <ul class="caveats">
+          <li>
+            <span data-lang-th><b>Subjective สูง:</b> นักวิเคราะห์ 5 คนอาจนับคลื่นต่างกัน ใช้ร่วมกับ indicator อื่น (volume, RSI, MACD)</span>
+            <span data-lang-en><b>Highly subjective:</b> 5 analysts may count waves differently. Combine with other tools (volume, RSI, MACD).</span>
+          </li>
+          <li>
+            <span data-lang-th><b>ทำงานดีกว่าใน TF ใหญ่:</b> 1H, 4H, Daily ส่วน TF เล็ก (1m, 5m) noise สูงเกินไป</span>
+            <span data-lang-en><b>Works better on higher TFs:</b> 1H, 4H, Daily. Lower TFs (1m, 5m) are too noisy.</span>
+          </li>
+          <li>
+            <span data-lang-th><b>ไม่ใช่ holy grail:</b> เป็นเครื่องมือ "บริบท" บอกว่าตลาดอยู่ช่วงไหนของวงจร — ใช้ตัดสินใจร่วมกับ risk management</span>
+            <span data-lang-en><b>Not a holy grail:</b> A "context" tool that tells you where in the cycle you are. Combine with risk management.</span>
+          </li>
+          <li>
+            <span data-lang-th><b>การ invalidate สำคัญกว่าการ predict:</b> ถ้ากฎโดนละเมิด ทิ้ง count เดิม นับใหม่ทันที</span>
+            <span data-lang-en><b>Invalidation &gt; Prediction:</b> If a rule breaks, abandon the count and re-label immediately.</span>
+          </li>
+        </ul>
+        <p class="footer-note">
+          <span data-lang-th>📚 สื่อการเรียนรู้นี้ไม่ใช่คำแนะนำการลงทุน — การเทรดมีความเสี่ยง</span>
+          <span data-lang-en>📚 Educational material — not investment advice. Trading involves risk.</span>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

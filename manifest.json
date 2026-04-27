@@ -53,6 +53,44 @@
         "en": "Dig into Wilder smoothing with a step-by-step table, interactive chart, and signal interpretation."
       },
       "tags": ["finance", "trading", "indicator", "การเงิน"]
+    },
+    {
+      "id": "elliott-wave",
+      "slug": "elliott-wave",
+      "path": "sandboxes/elliott-wave/index.html",
+      "icon": "🌊",
+      "title": {
+        "th": "Elliott Wave",
+        "en": "Elliott Wave"
+      },
+      "subtitle": {
+        "th": "ทฤษฎีคลื่นเอลเลียต 5-3 + จิตวิทยามวลชน",
+        "en": "5-3 wave theory + crowd psychology"
+      },
+      "description": {
+        "th": "โครงสร้างคลื่น 5-3, 9 ระดับ degree, Wave Builder ลากจุด, Fibonacci, ตัวอย่างกราฟไม่ perfect และ Flashcard quiz",
+        "en": "5-3 structure, 9 wave degrees, drag-to-build wave validator, Fibonacci tools, imperfect-real-chart variants, and a flashcard quiz."
+      },
+      "tags": ["finance", "trading", "elliott", "การเงิน", "เทคนิคอล"]
+    },
+    {
+      "id": "wyckoff-method",
+      "slug": "wyckoff-method",
+      "path": "sandboxes/wyckoff-method/index.html",
+      "icon": "🎼",
+      "title": {
+        "th": "Wyckoff Method",
+        "en": "Wyckoff Method"
+      },
+      "subtitle": {
+        "th": "อ่านพฤติกรรม Composite Man ผ่านราคา-วอลุ่ม",
+        "en": "Read the Composite Man through price & volume"
+      },
+      "description": {
+        "th": "3 Laws, วงจร 4 เฟส, Schematic Phase A-E ของ Accumulation/Distribution ครบทุก event, Volume×Price scenarios, เกมลากป้ายจับเวลา และ Flashcard quiz",
+        "en": "3 Laws, 4-phase cycle, full A-E schematics of Accumulation/Distribution with all events, Volume×Price scenarios, timed labeling game, and a flashcard quiz."
+      },
+      "tags": ["finance", "trading", "wyckoff", "การเงิน", "เทคนิคอล"]
     }
   ]
 }

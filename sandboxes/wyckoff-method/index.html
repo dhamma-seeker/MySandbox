@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wyckoff Method · MySandbox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" aria-label="back">←</a>
+      <div class="topbar__brand">Wyckoff 🎼</div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>Wyckoff Method 🎼</span>
+          <span data-lang-en>The Wyckoff Method 🎼</span>
+        </h1>
+        <p class="sub">
+          <span data-lang-th>อ่านพฤติกรรม "วาทยกรของตลาด" ผ่านราคา-วอลุ่ม รู้ว่าตลาดอยู่เฟส accumulation, markup, distribution หรือ markdown</span>
+          <span data-lang-en>Read the "market conductor" through price &amp; volume — know whether markets are accumulating, marking up, distributing, or marking down</span>
+        </p>
+      </div>
+
+      <!-- ============ Section 1: Composite Man ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>1. The Composite Man — วาทยกรในเงา</span>
+          <span data-lang-en>1. The Composite Man — The Conductor in the Shadow</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            <strong>Richard D. Wyckoff</strong> (สหรัฐ, 1873–1934) นักเทรดรุ่นเดียวกับ Jesse Livermore สังเกตว่า
+            ตลาดเคลื่อนไหวเหมือน "ผู้เล่นยักษ์รายเดียว" กำลังเล่นเกมตามแผนที่ออกแบบไว้ — Wyckoff เรียกผู้เล่นคนนี้ว่า
+            <em>The Composite Man (Composite Operator)</em>
+          </span>
+          <span data-lang-en>
+            <strong>Richard D. Wyckoff</strong> (USA, 1873–1934), a contemporary of Jesse Livermore, noticed that markets behave
+            as if a single giant operator is conducting a planned campaign. Wyckoff called this player
+            <em>The Composite Man (Composite Operator)</em>.
+          </span>
+        </p>
+        <div class="conductor">
+          <div class="conductor__icon">🎼</div>
+          <div class="conductor__text">
+            <p>
+              <span data-lang-th>
+                <b>คำสอนหลักของ Wyckoff:</b> "อย่าสนใจว่าใครซื้อใครขาย — ให้สนใจว่าราคาและวอลุ่มกำลังบอกอะไร
+                เพราะมัน = ผลลัพธ์ของแผน Composite Man ที่กำลังสะสมหรือทยอยแจกจ่าย"
+              </span>
+              <span data-lang-en>
+                <b>Wyckoff's core teaching:</b> "Don't focus on who's buying or selling — focus on what price and volume
+                are telling you. They reveal the Composite Man's plan: accumulating, or distributing."
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="callout">
+          <strong data-lang-th>5-Step Approach (วิธีวิเคราะห์แบบ Wyckoff):</strong>
+          <strong data-lang-en>The 5-Step Approach:</strong>
+          <ol>
+            <li><span data-lang-th><b>1) Trend ปัจจุบัน:</b> ตลาดอยู่ในเฟสไหน (accumulation/markup/distribution/markdown)</span><span data-lang-en><b>1) Current trend:</b> what phase is the market in?</span></li>
+            <li><span data-lang-th><b>2) ความแข็งแรงของหุ้น:</b> เปรียบเทียบกับ index — leading หรือ lagging</span><span data-lang-en><b>2) Stock strength:</b> compare to the index — leader or laggard?</span></li>
+            <li><span data-lang-th><b>3) Cause:</b> trading range ขนาดเท่าไร = potential trend ขนาดไหน</span><span data-lang-en><b>3) Cause:</b> how large is the trading range = expected trend size?</span></li>
+            <li><span data-lang-th><b>4) Readiness:</b> Spring/UTAD เกิดแล้วหรือยัง? พร้อมเข้าได้ไหม</span><span data-lang-en><b>4) Readiness:</b> has Spring/UTAD already occurred? Ready to enter?</span></li>
+            <li><span data-lang-th><b>5) Timing:</b> entry &amp; stop-loss ตามจุด event ของ schematic</span><span data-lang-en><b>5) Timing:</b> entry &amp; stop based on schematic events</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ Section 2: Three Laws ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>2. กฎสามข้อของ Wyckoff (Three Laws)</span>
+          <span data-lang-en>2. Wyckoff's Three Laws</span>
+        </h2>
+        <p>
+          <span data-lang-th>คลิกแต่ละการ์ดเพื่อทดลอง interactive สั้นๆ ที่อธิบายกฎข้อนั้น</span>
+          <span data-lang-en>Click each card to play with a short interactive that explains the law</span>
+        </p>
+        <div class="laws">
+          <div class="law-card" id="law1">
+            <div class="law-card__num">I</div>
+            <h3 data-lang-th>กฎ Supply &amp; Demand</h3>
+            <h3 data-lang-en>Law of Supply &amp; Demand</h3>
+            <p data-lang-th>เมื่อ demand &gt; supply → ราคาขึ้น<br>เมื่อ supply &gt; demand → ราคาลง<br>เมื่อสมดุล → sideways</p>
+            <p data-lang-en>When demand &gt; supply → up<br>When supply &gt; demand → down<br>When balanced → sideways</p>
+            <div class="law-card__demo">
+              <label><span data-lang-th>Demand</span><span data-lang-en>Demand</span><input type="range" id="demandSlider" min="0" max="100" value="50"></label>
+              <label><span data-lang-th>Supply</span><span data-lang-en>Supply</span><input type="range" id="supplySlider" min="0" max="100" value="50"></label>
+              <div class="law-card__readout" id="law1Out"></div>
+            </div>
+          </div>
+          <div class="law-card" id="law2">
+            <div class="law-card__num">II</div>
+            <h3 data-lang-th>กฎ Cause &amp; Effect</h3>
+            <h3 data-lang-en>Law of Cause &amp; Effect</h3>
+            <p data-lang-th>Trading range ที่ใหญ่ (cause) จะทำให้เกิด trend ที่ใหญ่ (effect) ตามมา — Wyckoff ใช้ Point &amp; Figure วัด cause</p>
+            <p data-lang-en>A larger trading range (cause) produces a larger trend (effect). Wyckoff uses Point &amp; Figure counts to measure cause.</p>
+            <div class="law-card__demo">
+              <label><span data-lang-th>ขนาด Cause</span><span data-lang-en>Cause size</span><input type="range" id="causeSlider" min="10" max="100" value="40"></label>
+              <svg id="causeSvg" viewBox="0 0 320 140"></svg>
+              <div class="law-card__readout" id="law2Out"></div>
+            </div>
+          </div>
+          <div class="law-card" id="law3">
+            <div class="law-card__num">III</div>
+            <h3 data-lang-th>กฎ Effort vs Result</h3>
+            <h3 data-lang-en>Law of Effort vs Result</h3>
+            <p data-lang-th>Volume = effort, Price move = result<br>เมื่อทั้งสองสอดคล้อง = trend แข็งแรง<br>เมื่อไม่สอดคล้อง = สัญญาณเตือน (divergence)</p>
+            <p data-lang-en>Volume = effort, price move = result.<br>When they align → trend is healthy.<br>When they diverge → warning sign.</p>
+            <div class="law-card__demo">
+              <button class="btn-secondary mini" data-evr="healthy" data-lang-th>Trend แข็งแรง</button>
+              <button class="btn-secondary mini" data-evr="climax" data-lang-th>Climax</button>
+              <button class="btn-secondary mini" data-evr="nodemand" data-lang-th>No Demand</button>
+              <button class="btn-secondary mini" data-evr="healthy" data-lang-en>Healthy trend</button>
+              <button class="btn-secondary mini" data-evr="climax" data-lang-en>Climax</button>
+              <button class="btn-secondary mini" data-evr="nodemand" data-lang-en>No Demand</button>
+              <svg id="evrSvg" viewBox="0 0 320 160"></svg>
+              <div class="law-card__readout" id="law3Out"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Section 3: Market Cycle ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>3. วงจรตลาด 4 เฟส</span>
+          <span data-lang-en>3. The Four-Phase Market Cycle</span>
+        </h2>
+        <p>
+          <span data-lang-th>ทุกตลาดเคลื่อนตามวงจร 4 เฟสสลับกัน — Composite Man สะสม → ดันขึ้น → แจกจ่าย → ทุบลง</span>
+          <span data-lang-en>All markets cycle through 4 phases — the Composite Man accumulates → marks up → distributes → marks down</span>
+        </p>
+        <div class="cycle-wrap">
+          <svg id="cycleSvg" viewBox="0 0 800 280" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="cycle-legend" id="cycleLegend"></div>
+        </div>
+      </section>
+
+      <!-- ============ Section 4: Accumulation Schematic ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>4. Accumulation Schematic — เฟสสะสม Phase A → E</span>
+          <span data-lang-en>4. Accumulation Schematic — Phases A through E</span>
+        </h2>
+        <p>
+          <span data-lang-th>Hover/แตะแต่ละ event เพื่ออ่านความหมาย กลไก และจิตวิทยา ดู volume ด้านล่าง</span>
+          <span data-lang-en>Hover/tap each event to learn its meaning, mechanics, and psychology. Watch the volume panel below.</span>
+        </p>
+        <div class="schematic-wrap">
+          <svg id="accumSvg" viewBox="0 0 900 480" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="event-readout" id="accumReadout">
+          <span class="event-readout__hint" data-lang-th>← Hover/แตะ event เพื่อดูรายละเอียด</span>
+          <span class="event-readout__hint" data-lang-en>← Hover/tap an event to see details</span>
+        </div>
+      </section>
+
+      <!-- ============ Section 5: Distribution Schematic ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>5. Distribution Schematic — เฟสแจกจ่าย Phase A → E</span>
+          <span data-lang-en>5. Distribution Schematic — Phases A through E</span>
+        </h2>
+        <p>
+          <span data-lang-th>โครงสร้างกลับด้านของ Accumulation — Composite Man ทยอย "แจก" หุ้นให้รายย่อยที่กระทือรือร้น</span>
+          <span data-lang-en>The mirror image — the Composite Man unloads inventory to enthusiastic retail.</span>
+        </p>
+        <div class="schematic-wrap">
+          <svg id="distSvg" viewBox="0 0 900 480" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="event-readout" id="distReadout">
+          <span class="event-readout__hint" data-lang-th>← Hover/แตะ event เพื่อดูรายละเอียด</span>
+          <span class="event-readout__hint" data-lang-en>← Hover/tap an event to see details</span>
+        </div>
+      </section>
+
+      <!-- ============ Section 6: Volume × Price scenarios ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>6. Volume × Price — อ่านสัญญาณ 6 ฉาก</span>
+          <span data-lang-en>6. Volume × Price — Reading 6 Key Signals</span>
+        </h2>
+        <p>
+          <span data-lang-th>กดปุ่ม scenario เพื่อสลับฉาก ดูราคา + volume bar + คำอธิบายว่ากำลังบอกอะไร</span>
+          <span data-lang-en>Click scenarios to swap. See the price + volume bars and what each is telling you.</span>
+        </p>
+        <div class="vp-tabs" id="vpTabs"></div>
+        <div class="vp-canvas-wrap">
+          <canvas id="vpCanvas" width="720" height="380"></canvas>
+        </div>
+        <div class="vp-readout" id="vpReadout"></div>
+      </section>
+
+      <!-- ============ Section 7: Schematic Lab — 2 modes ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>7. Schematic Lab — ห้องทดลอง</span>
+          <span data-lang-en>7. Schematic Lab — Two Modes</span>
+        </h2>
+        <p>
+          <span data-lang-th>โหมด A: เกมลากป้ายลงจุดที่ถูกต้องแบบจับเวลา · โหมด B: ดู carousel scenario หลายแบบ</span>
+          <span data-lang-en>Mode A: timed labeling drag-game · Mode B: scenario carousel</span>
+        </p>
+        <div class="lab-tabs">
+          <button class="lab-tab active" data-mode="game">
+            <span data-lang-th>🎯 โหมด A — เกมลากป้าย</span>
+            <span data-lang-en>🎯 Mode A — Labeling Game</span>
+          </button>
+          <button class="lab-tab" data-mode="carousel">
+            <span data-lang-th>🎠 โหมด B — Scenario Carousel</span>
+            <span data-lang-en>🎠 Mode B — Scenario Carousel</span>
+          </button>
+        </div>
+
+        <!-- Game mode -->
+        <div class="lab-pane lab-pane--game" id="labGame">
+          <div class="lab-game__hud">
+            <div class="lab-stat"><span class="lab-stat__label" data-lang-th>คะแนน</span><span class="lab-stat__label" data-lang-en>Score</span><span id="labScore">0</span></div>
+            <div class="lab-stat"><span class="lab-stat__label" data-lang-th>ถูก</span><span class="lab-stat__label" data-lang-en>Correct</span><span id="labCorrect">0</span></div>
+            <div class="lab-stat"><span class="lab-stat__label" data-lang-th>เวลา</span><span class="lab-stat__label" data-lang-en>Time</span><span id="labTime">90</span></div>
+            <div class="lab-stat"><span class="lab-stat__label" data-lang-th>Best</span><span class="lab-stat__label" data-lang-en>Best</span><span id="labBest">0</span></div>
+          </div>
+          <div class="lab-game__board">
+            <svg id="labGameSvg" viewBox="0 0 900 380" preserveAspectRatio="xMidYMid meet"></svg>
+          </div>
+          <div class="lab-game__bank" id="labBank"><!-- draggable label pills --></div>
+          <div class="lab-game__controls">
+            <button class="btn-secondary" id="labStart"><span data-lang-th>▶ เริ่มเกม</span><span data-lang-en>▶ Start</span></button>
+            <button class="btn-secondary" id="labReset"><span data-lang-th>↺ รีเซ็ต</span><span data-lang-en>↺ Reset</span></button>
+            <select id="labScenarioSel">
+              <option value="accum"><span data-lang-th>Accumulation</span></option>
+              <option value="dist">Distribution</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Carousel mode -->
+        <div class="lab-pane lab-pane--carousel" id="labCarousel" style="display:none;">
+          <div class="carousel-header">
+            <button class="icon-btn" id="carPrev">‹</button>
+            <div class="carousel-title" id="carTitle"></div>
+            <button class="icon-btn" id="carNext">›</button>
+          </div>
+          <div class="schematic-wrap">
+            <svg id="carSvg" viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet"></svg>
+          </div>
+          <div class="carousel-readout" id="carReadout"></div>
+        </div>
+      </section>
+
+      <!-- ============ Section 8: Real Charts ≠ Schematic ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>8. ของจริงไม่เป็น Schematic — กราฟไม่สวยก็ใช้ได้</span>
+          <span data-lang-en>8. Real Charts ≠ Schematic — Imperfect but still valid</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            ตัวอย่างในตำรา Wyckoff ดูสะอาด แต่กราฟจริงในตลาดมักผิดปกติกว่ามาก
+            หัวข้อนี้แสดง pattern ที่ "ไม่ตรง schematic" แต่ก็ยังใช้กรอบ Wyckoff อ่านได้ <em>เพื่อไม่ให้ยึดติดกับภาพในตำรา</em>
+          </span>
+          <span data-lang-en>
+            Textbook Wyckoff schematics are clean, but real markets are messier. Below are patterns that
+            "don't match the schematic" yet remain valid through the Wyckoff lens — <em>so you don't fixate on idealized examples.</em>
+          </span>
+        </p>
+        <div class="variant-grid" id="realGrid"></div>
+        <div class="callout warn">
+          <strong data-lang-th>⚠️ ข้อผิดพลาดของผู้เริ่มต้น:</strong>
+          <strong data-lang-en>⚠️ Beginner mistakes:</strong>
+          <ul>
+            <li><span data-lang-th>นับ Spring จาก wick เล็กที่ไม่มี volume sign — ต้องมี volume สูง + กลับขึ้นเร็ว</span><span data-lang-en>Calling any small wick a Spring without volume confirmation — needs high volume + quick recovery</span></li>
+            <li><span data-lang-th>เข้าก่อน LPS — Spring ไม่ใช่จุด entry หลัก, LPS/Test คือจุดเข้าที่ปลอดภัยกว่า</span><span data-lang-en>Entering before LPS — Spring isn't the main entry, LPS/Test is safer</span></li>
+            <li><span data-lang-th>ใช้ schematic ทื่อๆ ในตลาดที่ไม่มี volume จริง (forex spot)</span><span data-lang-en>Applying schematics rigidly to markets without real volume (forex spot)</span></li>
+            <li><span data-lang-th>ลืมว่า re-distribution / re-accumulation เกิดได้ — ไม่ใช่ทุก range จะเป็นจุดกลับตัวหลัก</span><span data-lang-en>Forgetting re-distribution/re-accumulation exists — not every range is a major reversal</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ Section 9: Flashcard Quiz ============ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>9. Flashcard Quiz 🎴</span>
+          <span data-lang-en>9. Flashcard Quiz 🎴</span>
+        </h2>
+        <p>
+          <span data-lang-th>กดบัตรเพื่อพลิกดูคำตอบ แล้วประเมินตัวเองว่ารู้หรือไม่ ระบบนับคะแนน, streak และวนข้อที่ตอบผิดมาให้ถามซ้ำ</span>
+          <span data-lang-en>Tap a card to flip and self-grade. The game tracks score, streak, and re-asks missed questions.</span>
+        </p>
+        <div class="quiz" id="quiz">
+          <div class="quiz__stats">
+            <div class="quiz__stat"><span class="quiz__stat-label" data-lang-th>คะแนน</span><span class="quiz__stat-label" data-lang-en>Score</span><span class="quiz__stat-value" id="qScore">0</span></div>
+            <div class="quiz__stat"><span class="quiz__stat-label" data-lang-th>Streak 🔥</span><span class="quiz__stat-label" data-lang-en>Streak 🔥</span><span class="quiz__stat-value" id="qStreak">0</span></div>
+            <div class="quiz__stat"><span class="quiz__stat-label" data-lang-th>Best</span><span class="quiz__stat-label" data-lang-en>Best</span><span class="quiz__stat-value" id="qBest">0</span></div>
+            <div class="quiz__stat"><span class="quiz__stat-label" data-lang-th>เหลือ</span><span class="quiz__stat-label" data-lang-en>Left</span><span class="quiz__stat-value" id="qRemain">–</span></div>
+          </div>
+          <div class="flashcard" id="flashcard" tabindex="0">
+            <div class="flashcard__inner">
+              <div class="flashcard__face flashcard__face--front">
+                <div class="flashcard__badge" id="qBadge">Q1</div>
+                <div class="flashcard__text" id="qFront"></div>
+                <div class="flashcard__hint">
+                  <span data-lang-th>คลิกการ์ดเพื่อพลิกดูคำตอบ</span>
+                  <span data-lang-en>Click the card to reveal</span>
+                </div>
+              </div>
+              <div class="flashcard__face flashcard__face--back">
+                <div class="flashcard__badge flashcard__badge--a">A</div>
+                <div class="flashcard__text" id="qBack"></div>
+              </div>
+            </div>
+          </div>
+          <div class="quiz__actions">
+            <button class="btn-quiz btn-quiz--bad" id="qWrong"><span data-lang-th>❌ ยังไม่รู้</span><span data-lang-en>❌ Didn't know</span></button>
+            <button class="btn-quiz btn-quiz--good" id="qRight"><span data-lang-th>✅ รู้</span><span data-lang-en>✅ Knew it</span></button>
+          </div>
+          <div class="quiz__footer">
+            <button class="link-btn" id="qReset"><span data-lang-th>↺ เริ่มใหม่</span><span data-lang-en>↺ Restart</span></button>
+            <button class="link-btn" id="qShuffle"><span data-lang-th>🔀 สลับข้อ</span><span data-lang-en>🔀 Shuffle</span></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ Section 10: Disclaimer ============ -->
+      <section class="section section--note">
+        <h2>
+          <span data-lang-th>10. ข้อจำกัด &amp; คำเตือน</span>
+          <span data-lang-en>10. Limitations &amp; Caveats</span>
+        </h2>
+        <ul class="caveats">
+          <li>
+            <span data-lang-th><b>ต้องมี volume จริง:</b> Wyckoff ใช้ดีในหุ้น/futures ที่มี centralized volume — forex spot ไม่มี volume จริง ใช้ tick volume แทน</span>
+            <span data-lang-en><b>Needs real volume:</b> Wyckoff works best with stocks/futures (centralized volume). Forex spot lacks true volume — use tick volume as proxy.</span>
+          </li>
+          <li>
+            <span data-lang-th><b>Subjective ระดับหนึ่ง:</b> การระบุ Spring vs failed breakdown มีดุลยพินิจ — ใช้ confluence (volume, structure, timeframe) ตัดสิน</span>
+            <span data-lang-en><b>Some subjectivity:</b> distinguishing Spring vs failed breakdown is judgment-based — use confluence (volume, structure, TF).</span>
+          </li>
+          <li>
+            <span data-lang-th><b>Re-accumulation มีจริง:</b> ไม่ใช่ทุก trading range จะเป็นจุดกลับตัวหลัก — บางทีคือ "หยุดพักก่อน trend ต่อ"</span>
+            <span data-lang-en><b>Re-accumulation is real:</b> not every range is a major reversal — sometimes it's a pause within an existing trend.</span>
+          </li>
+          <li>
+            <span data-lang-th><b>เป็นกรอบ ไม่ใช่ holy grail:</b> ใช้ร่วมกับ risk management — Spring fail ก็เกิดได้ stop-loss ใต้จุดต่ำ Spring ทุกครั้ง</span>
+            <span data-lang-en><b>A framework, not a holy grail:</b> combine with risk management — Springs can fail. Always stop below the Spring low.</span>
+          </li>
+        </ul>
+        <p class="footer-note">
+          <span data-lang-th>📚 สื่อการเรียนรู้ — ไม่ใช่คำแนะนำการลงทุน การเทรดมีความเสี่ยง</span>
+          <span data-lang-en>📚 Educational material — not investment advice. Trading involves risk.</span>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
