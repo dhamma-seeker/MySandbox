@@ -1,10 +1,30 @@
 {
+  "categories": [
+    {
+      "id": "physics",
+      "label": { "th": "ฟิสิกส์", "en": "Physics" },
+      "color": "#8b5cf6"
+    },
+    {
+      "id": "finance",
+      "label": { "th": "การเงิน", "en": "Finance" },
+      "color": "#10b981",
+      "parents": []
+    },
+    {
+      "id": "technical-analysis",
+      "label": { "th": "เทคนิคอล", "en": "Technical Analysis" },
+      "color": "#0ea5e9",
+      "parents": ["finance"]
+    }
+  ],
   "sandboxes": [
     {
       "id": "emc2",
       "slug": "emc2",
       "path": "sandboxes/emc2/index.html",
       "icon": "⚡",
+      "category": "physics",
       "title": { "th": "E = mc²", "en": "E = mc²" },
       "subtitle": {
         "th": "ความสัมพันธ์ มวล พลังงาน และแสง",
@@ -21,6 +41,7 @@
       "slug": "candlestick-patterns",
       "path": "sandboxes/candlestick-patterns/index.html",
       "icon": "🕯️",
+      "category": "finance",
       "title": {
         "th": "กราฟแท่งเทียน",
         "en": "Candlestick Patterns"
@@ -40,6 +61,7 @@
       "slug": "rsi-indicator",
       "path": "sandboxes/rsi-indicator/index.html",
       "icon": "📈",
+      "category": "technical-analysis",
       "title": {
         "th": "RSI Indicator",
         "en": "RSI Indicator"
@@ -59,6 +81,7 @@
       "slug": "elliott-wave",
       "path": "sandboxes/elliott-wave/index.html",
       "icon": "🌊",
+      "category": "technical-analysis",
       "title": {
         "th": "Elliott Wave",
         "en": "Elliott Wave"
@@ -78,6 +101,7 @@
       "slug": "wyckoff-method",
       "path": "sandboxes/wyckoff-method/index.html",
       "icon": "🎼",
+      "category": "technical-analysis",
       "title": {
         "th": "Wyckoff Method",
         "en": "Wyckoff Method"

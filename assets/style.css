@@ -184,6 +184,123 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
+/* ===== Hero card with knowledge graph ===== */
+.welcome--hero {
+  width: min(720px, 100%);
+  padding: 24px 24px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+}
+.welcome--hero h1 {
+  font-size: 28px;
+  margin-bottom: 2px;
+}
+.welcome--hero p {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.filter-badge {
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-soft);
+  margin-bottom: 4px;
+}
+.filter-badge--all {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: transparent;
+}
+.filter-badge--active {
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--text);
+}
+.filter-badge__dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.kgraph {
+  display: block;
+  width: 100%;
+  max-width: 620px;
+  margin: 4px auto 0;
+  aspect-ratio: 600 / 420;
+  max-height: 52vh;
+  overflow: visible;
+}
+.kgraph__edge {
+  stroke: #d4d4d8;
+  stroke-width: 1.5;
+  transition: opacity 0.2s, stroke 0.2s;
+}
+.kgraph__edge--dim { opacity: 0.18; }
+
+.kgraph__node {
+  cursor: pointer;
+  transition: opacity 0.2s;
+  outline: none;
+}
+.kgraph__node--dim { opacity: 0.28; }
+
+.kgraph__cat-circle {
+  transition: filter 0.15s, stroke-width 0.15s;
+  stroke: rgba(255,255,255,0.9);
+  stroke-width: 0;
+}
+.kgraph__node--cat:hover .kgraph__cat-circle {
+  filter: brightness(1.12) drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+.kgraph__node--active .kgraph__cat-circle {
+  stroke: var(--text);
+  stroke-width: 3;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.18));
+}
+.kgraph__cat-label {
+  font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  fill: var(--text);
+  pointer-events: none;
+}
+
+.kgraph__sb-circle {
+  transition: stroke-width 0.15s, filter 0.15s;
+}
+.kgraph__node--sb:hover .kgraph__sb-circle {
+  stroke-width: 3.5;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+.kgraph__sb-icon {
+  font-size: 18px;
+  pointer-events: none;
+}
+.kgraph__node:focus-visible .kgraph__cat-circle,
+.kgraph__node:focus-visible .kgraph__sb-circle {
+  stroke: var(--accent);
+  stroke-width: 3.5;
+}
+
+@media (max-width: 480px) {
+  .welcome--hero { padding: 18px 16px 14px; }
+  .welcome--hero h1 { font-size: 22px; }
+  .welcome--hero p { font-size: 12px; }
+  .filter-badge { font-size: 11px; padding: 5px 10px; }
+  .kgraph { max-height: 46vh; }
+}
+
 /* ===== Menu Drawer ===== */
 .drawer {
   position: fixed;
