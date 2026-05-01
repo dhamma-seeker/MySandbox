@@ -1,0 +1,420 @@
+/* ============================================================
+   Volume Indicator — sandbox-specific styles
+   ============================================================ */
+
+/* Disclaimer banner (reused pattern from rsi) */
+.disclaimer {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #7c2d12;
+}
+.disclaimer strong { margin-right: 4px; }
+
+.muted {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+/* ============================================================
+   Fact grid
+   ============================================================ */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 14px;
+}
+.fact {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.fact-k {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.fact-v {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   Dataset picker
+   ============================================================ */
+.dataset-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 14px 0;
+}
+.ds-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: var(--text);
+  transition: all 0.15s;
+}
+.ds-btn:hover {
+  border-color: var(--accent-soft);
+  background: #fff;
+}
+.ds-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.ds-icon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+.ds-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.ds-tag {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+/* ============================================================
+   Chart wrapper
+   ============================================================ */
+.chart-wrap {
+  position: relative;
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 8px;
+  margin-top: 10px;
+}
+.chart-canvas {
+  display: block;
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+}
+.chart-canvas--volume {
+  height: 110px;
+  margin-top: 4px;
+}
+
+.chart-tooltip {
+  position: absolute;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f1f5f9;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s;
+  white-space: nowrap;
+  z-index: 5;
+}
+.chart-tooltip.visible {
+  opacity: 1;
+}
+
+.readout {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 50px;
+}
+.readout code {
+  background: var(--surface);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+.readout .pos { color: #16a34a; font-weight: 600; }
+.readout .neg { color: #dc2626; font-weight: 600; }
+
+/* ============================================================
+   Scenario row
+   ============================================================ */
+.scenario-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.sc-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.sc-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.sc-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.sc-btn--reset {
+  margin-left: auto;
+}
+.scenario-note {
+  margin-top: 12px;
+  padding: 0 4px;
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  min-height: 22px;
+}
+.scenario-note strong { color: var(--text); }
+
+/* ============================================================
+   Principles grid
+   ============================================================ */
+.principle-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+@media (min-width: 768px) {
+  .principle-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.principle {
+  display: flex;
+  gap: 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.principle-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.principle-body h3 {
+  font-size: 15px;
+  margin: 2px 0 6px;
+  font-weight: 600;
+}
+.principle-body p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ============================================================
+   Volume × Price matrix
+   ============================================================ */
+.matrix {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+@media (min-width: 720px) {
+  .matrix { grid-template-columns: repeat(2, 1fr); }
+}
+.mx {
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+}
+.mx-bull { background: #f0fdf4; border-color: #bbf7d0; }
+.mx-warn { background: #fefce8; border-color: #fef08a; }
+.mx-bear { background: #fef2f2; border-color: #fecaca; }
+.mx-neutral { background: #f8fafc; border-color: #e2e8f0; }
+
+.mx-head {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+.mx-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.mx-tag--bull { background: #16a34a; color: #fff; }
+.mx-tag--warn { background: #ca8a04; color: #fff; }
+.mx-tag--bear { background: #dc2626; color: #fff; }
+.mx-tag--neutral { background: #64748b; color: #fff; }
+.mx p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* ============================================================
+   Indicator tabs and panels
+   ============================================================ */
+.ind-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  border-bottom: 2px solid var(--border);
+  margin: 14px 0 0;
+}
+.ind-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  margin-bottom: -2px;
+}
+.ind-tab.active {
+  background: var(--bg);
+  border-color: var(--border);
+  border-bottom-color: var(--bg);
+  color: var(--accent);
+}
+.ind-panel {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  padding: 16px 18px;
+}
+.ind-panel.hidden { display: none; }
+.ind-panel h3 {
+  font-size: 17px;
+  margin: 0 0 10px;
+}
+.ind-formula {
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.ind-formula code {
+  font-family: 'JetBrains Mono', monospace;
+  background: transparent;
+  color: #fbbf24;
+  padding: 0;
+}
+.ind-panel p { font-size: 14px; line-height: 1.65; }
+
+.ind-chart-wrap {
+  position: relative;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 8px;
+  margin: 12px 0;
+}
+.ind-readout {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  padding: 0 4px;
+  min-height: 22px;
+}
+.ind-readout strong { color: var(--text); }
+
+/* Volume Profile: side-by-side price chart and horizontal histogram */
+.profile-wrap {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 6px;
+  background: #0f172a;
+  border-radius: 10px;
+  padding: 8px;
+  margin: 12px 0;
+}
+@media (max-width: 600px) {
+  .profile-wrap { grid-template-columns: 1fr 130px; }
+}
+.profile-price { height: 360px !important; }
+.profile-hist  { height: 360px !important; }
+
+/* ============================================================
+   Use cases
+   ============================================================ */
+.usecase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+@media (min-width: 640px) {
+  .usecase-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .usecase-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.usecase {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.uc-emoji {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+.usecase h3 {
+  font-size: 15px;
+  margin: 0 0 6px;
+  color: var(--accent);
+}
+.usecase p {
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.55;
+  margin: 0;
+}

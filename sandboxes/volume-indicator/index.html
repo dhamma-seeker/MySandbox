@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Volume Indicator · MySandbox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../../index.html" class="icon-btn" title="Back">←</a>
+      <div class="topbar__brand">
+        <span data-lang-th>Volume Indicator</span>
+        <span data-lang-en>Volume Indicator</span>
+      </div>
+    </div>
+    <div class="topbar__actions">
+      <button class="lang-btn" title="Toggle language">EN</button>
+    </div>
+  </header>
+
+  <main class="sandbox-page">
+    <div class="sandbox-container">
+
+      <div class="sandbox-header">
+        <h1>
+          <span data-lang-th>Volume — เชื้อเพลิงของราคา</span>
+          <span data-lang-en>Volume — The Fuel of Price</span>
+        </h1>
+        <div class="sub">
+          <span data-lang-th>วอลุ่มคืออะไร อ่านอย่างไร ใช้ทำไม + OBV · VWAP · Volume Profile · A/D Line · MFI</span>
+          <span data-lang-en>What volume is, how to read it, why it matters + OBV · VWAP · Volume Profile · A/D Line · MFI.</span>
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        <strong>⚠️
+          <span data-lang-th>คำเตือน:</span>
+          <span data-lang-en>Disclaimer:</span>
+        </strong>
+        <span data-lang-th>เนื้อหาเพื่อการศึกษาเท่านั้น ไม่ใช่คำแนะนำการลงทุน · ข้อมูลราคา/วอลุ่มประมาณจากข้อมูลจริง (AAPL ส.ค.–พ.ย. 2024, GME ม.ค. 2021, PTT 2024) เพื่อความชัดเจนของรูปแบบ</span>
+          <span data-lang-en>Educational content only, not investment advice. OHLCV data is approximated from real markets (AAPL Aug–Nov 2024, GME Jan 2021, PTT 2024) for pattern clarity.</span>
+      </div>
+
+      <!-- ============================================================
+           Section 1: What is Volume
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>📖 Volume คืออะไร · เกิดจากอะไร</span>
+          <span data-lang-en>📖 What is Volume? Where does it come from?</span>
+        </h2>
+        <p>
+          <span data-lang-th>
+            <strong>Volume</strong> คือจำนวนหุ้น/สัญญา/เหรียญ ที่<em>เปลี่ยนมือ</em>จริงในช่วงเวลาหนึ่ง
+            (เช่น 1 แท่งเทียน = 1 วัน → วอลุ่ม = หุ้นที่ซื้อขายทั้งวัน)
+            ทุกการซื้อขายต้องมีคู่เสมอ — มีคนขาย เท่ากับ มีคนซื้อ — แต่ละ "deal" นับเป็น 1 หน่วยวอลุ่ม
+            ราคาบอกเราว่าตลาดคิดอย่างไร แต่ <strong>วอลุ่มบอกเราว่าตลาดคิดด้วย "แรง" แค่ไหน</strong>
+          </span>
+          <span data-lang-en>
+            <strong>Volume</strong> is the number of shares/contracts/coins that <em>actually change hands</em> in a given period
+            (e.g. one daily candle's volume = total shares traded that day).
+            Every trade has two sides — for each seller there is a buyer — and each match counts as one unit of volume.
+            Price tells us what the market thinks; <strong>volume tells us how strongly it thinks it.</strong>
+          </span>
+        </p>
+
+        <div class="fact-grid">
+          <div class="fact">
+            <div class="fact-k">1 + 1 = 1</div>
+            <div class="fact-v">
+              <span data-lang-th>ผู้ซื้อ + ผู้ขาย = 1 ดีล นับวอลุ่ม 1 หน่วย</span>
+              <span data-lang-en>1 buyer + 1 seller = 1 deal counts as 1 unit</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">📊</div>
+            <div class="fact-v">
+              <span data-lang-th>วัดเป็น <em>shares, contracts, lots, ฿/$ value</em></span>
+              <span data-lang-en>Measured in <em>shares, contracts, lots, $/฿ value</em></span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">⚡</div>
+            <div class="fact-v">
+              <span data-lang-th>วอลุ่มสูง = สนใจมาก<br/>วอลุ่มต่ำ = ไม่สนใจ/ลังเล</span>
+              <span data-lang-en>High volume = strong conviction<br/>Low volume = apathy/hesitation</span>
+            </div>
+          </div>
+          <div class="fact">
+            <div class="fact-k">⏱</div>
+            <div class="fact-v">
+              <span data-lang-th>ขึ้นกับ timeframe<br/>(daily, hourly, 5-min)</span>
+              <span data-lang-en>Depends on timeframe<br/>(daily, hourly, 5-min)</span>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:18px;">
+          <span data-lang-th>
+            <strong>ทำไมวอลุ่มถึงสำคัญ?</strong> ราคาที่ขยับโดยมี "เงิน/หุ้นจริง" หนุนหลัง = ความเชื่อมั่น
+            ราคาที่ขยับโดยไม่มีวอลุ่ม = อาจเป็นแค่ "อากาศ" ที่จะกลับตัวง่าย เปรียบเสมือนรถ —
+            วอลุ่มคือ <em>เชื้อเพลิง</em> ราคาคือ <em>ทิศทางการเดินทาง</em> รถวิ่งไกลโดยไม่มีน้ำมันไม่ได้
+          </span>
+          <span data-lang-en>
+            <strong>Why does volume matter?</strong> Price movement backed by real money/shares = conviction.
+            Price movement <em>without</em> volume = hot air, easily reversed. Think of a car:
+            volume is the <em>fuel</em>, price is the <em>direction of travel</em>. No fuel, no journey.
+          </span>
+        </p>
+      </section>
+
+      <!-- ============================================================
+           Section 2: Interactive Chart
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🕯 อ่าน Candlestick + Volume แบบโต้ตอบ</span>
+          <span data-lang-en>🕯 Read Candlestick + Volume Interactively</span>
+        </h2>
+        <p class="muted">
+          <span data-lang-th>เลือกชุดข้อมูล แล้วลากเมาส์/แตะบนกราฟ — เลื่อนผ่านแต่ละแท่งเพื่อดู OHLC + volume + การตีความ</span>
+          <span data-lang-en>Pick a dataset, then hover/tap any bar — see OHLC, volume, and interpretation per bar.</span>
+        </p>
+
+        <div class="dataset-picker">
+          <button class="ds-btn active" data-ds="aapl">
+            <span class="ds-icon">🍎</span>
+            <div>
+              <div class="ds-name">AAPL · Aug–Nov 2024</div>
+              <div class="ds-tag">
+                <span data-lang-th>ขาขึ้นแข็งแรง · มี selloff รับวอลุ่ม</span>
+                <span data-lang-en>Healthy uptrend with a high-volume selloff</span>
+              </div>
+            </div>
+          </button>
+          <button class="ds-btn" data-ds="gme">
+            <span class="ds-icon">🎮</span>
+            <div>
+              <div class="ds-name">GME · Jan–Feb 2021</div>
+              <div class="ds-tag">
+                <span data-lang-th>Climax volume · short squeeze</span>
+                <span data-lang-en>Climax volume · short squeeze</span>
+              </div>
+            </div>
+          </button>
+          <button class="ds-btn" data-ds="ptt">
+            <span class="ds-icon">🛢</span>
+            <div>
+              <div class="ds-name">PTT · 2024</div>
+              <div class="ds-tag">
+                <span data-lang-th>Sideways · breakout วอลุ่มยืนยัน</span>
+                <span data-lang-en>Sideways with volume-confirmed breakout</span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <div class="chart-wrap">
+          <canvas id="main-price" class="chart-canvas"></canvas>
+          <canvas id="main-volume" class="chart-canvas chart-canvas--volume"></canvas>
+          <div id="main-tooltip" class="chart-tooltip"></div>
+        </div>
+
+        <div class="readout" id="main-readout">
+          <span data-lang-th>เลื่อนเมาส์/แตะที่กราฟเพื่อดูข้อมูล</span>
+          <span data-lang-en>Hover or tap the chart to inspect bars.</span>
+        </div>
+
+        <div class="scenario-row">
+          <button class="sc-btn" data-sc="confirm">
+            <span data-lang-th>① วอลุ่มยืนยันเทรนด์</span>
+            <span data-lang-en>① Volume confirms trend</span>
+          </button>
+          <button class="sc-btn" data-sc="climax">
+            <span data-lang-th>② Climax volume</span>
+            <span data-lang-en>② Climax volume</span>
+          </button>
+          <button class="sc-btn" data-sc="divergence">
+            <span data-lang-th>③ Divergence</span>
+            <span data-lang-en>③ Divergence</span>
+          </button>
+          <button class="sc-btn" data-sc="breakout">
+            <span data-lang-th>④ Breakout วอลุ่ม</span>
+            <span data-lang-en>④ Volume-confirmed breakout</span>
+          </button>
+          <button class="sc-btn sc-btn--reset" data-sc="reset">
+            <span data-lang-th>↺ รีเซ็ต</span>
+            <span data-lang-en>↺ Reset</span>
+          </button>
+        </div>
+        <div class="scenario-note" id="scenario-note"></div>
+      </section>
+
+      <!-- ============================================================
+           Section 3: 5 Principles
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🧭 5 หลักการอ่านวอลุ่ม (คลาสสิก: Dow / Wyckoff)</span>
+          <span data-lang-en>🧭 5 Classical Volume Principles (Dow / Wyckoff)</span>
+        </h2>
+
+        <div class="principle-grid">
+          <div class="principle">
+            <div class="principle-num">1</div>
+            <div class="principle-body">
+              <h3><span data-lang-th>วอลุ่มยืนยันเทรนด์</span><span data-lang-en>Volume confirms trend</span></h3>
+              <p>
+                <span data-lang-th>ขาขึ้นที่ "ดี" วอลุ่มควรเพิ่มตามวันราคาขึ้น และลดในวันราคาย่อ
+                  ขาลงที่ "ดี" วอลุ่มควรเพิ่มตามวันราคาลง และลดในวันรีบาวด์</span>
+                <span data-lang-en>In a healthy uptrend volume rises on up-days and dries on pullbacks.
+                  In a healthy downtrend volume rises on down-days and dries on bounces.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="principle-num">2</div>
+            <div class="principle-body">
+              <h3><span data-lang-th>Divergence = สัญญาณเตือน</span><span data-lang-en>Divergence is a warning</span></h3>
+              <p>
+                <span data-lang-th>ราคาทำ new high แต่วอลุ่ม<em>ลด</em>ลง → แรงซื้อหมด เทรนด์เปราะ
+                  ราคาทำ new low แต่วอลุ่ม<em>ลด</em>ลง → แรงขายเริ่มแห้ง อาจฟอร์มก้น</span>
+                <span data-lang-en>New high on declining volume → buyers exhausted, trend fragile.
+                  New low on declining volume → selling drying up, possible bottom forming.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="principle-num">3</div>
+            <div class="principle-body">
+              <h3><span data-lang-th>Climax volume = อาจกลับตัว</span><span data-lang-en>Climax volume = possible reversal</span></h3>
+              <p>
+                <span data-lang-th>วอลุ่มพุ่งสุดขีดแบบไม่เคยเห็นมาก่อน บ่อยครั้งคือ "วันที่คนสุดท้าย"
+                  เข้าตลาดด้วยอารมณ์ — กลัวพลาด (FOMO) หรือกลัวเจ๊ง (panic) มักตามด้วยการกลับตัว</span>
+                <span data-lang-en>An exhaust-level volume spike often marks the "last buyers/sellers" entering on emotion —
+                  FOMO or panic. A reversal often follows.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="principle-num">4</div>
+            <div class="principle-body">
+              <h3><span data-lang-th>Pullback วอลุ่มต่ำ = เทรนด์ยังดี</span><span data-lang-en>Low-volume pullback = trend intact</span></h3>
+              <p>
+                <span data-lang-th>เมื่อราคาย่อในเทรนด์ขาขึ้น ถ้าวอลุ่มเบาบาง = นักลงทุนระยะกลาง-ยาว<em>ไม่ได้</em>เทขาย
+                  เป็นแค่ profit-taking ระยะสั้น เทรนด์ใหญ่ยังอยู่</span>
+                <span data-lang-en>If a pullback inside an uptrend comes on light volume, longer-term holders aren't selling —
+                  it's just short-term profit taking, the larger trend stays intact.</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="principle">
+            <div class="principle-num">5</div>
+            <div class="principle-body">
+              <h3><span data-lang-th>Breakout ต้องมีวอลุ่ม</span><span data-lang-en>Breakouts need volume</span></h3>
+              <p>
+                <span data-lang-th>ราคาเบรกแนวต้านเดิมโดยวอลุ่ม<em>ไม่</em>เพิ่ม → มักเป็น false breakout
+                  เบรกพร้อมวอลุ่ม &gt; 1.5× ของค่าเฉลี่ย = น่าเชื่อถือกว่ามาก</span>
+                <span data-lang-en>Breaking resistance on flat volume is usually a fakeout.
+                  A breakout backed by volume ≥ 1.5× average is far more reliable.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Section 4: Volume × Price Matrix
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🧮 ตาราง 2×2 — Volume × Price</span>
+          <span data-lang-en>🧮 The Volume × Price 2×2 Matrix</span>
+        </h2>
+        <p class="muted">
+          <span data-lang-th>วอลุ่มต้องอ่านคู่กับราคา ทุกครั้ง — เกิด 4 กรณีหลัก</span>
+          <span data-lang-en>Volume is meaningless without price context — 4 base cases:</span>
+        </p>
+
+        <div class="matrix">
+          <div class="mx mx-bull">
+            <div class="mx-head">
+              <span data-lang-th>ราคา ↑ + วอลุ่ม ↑</span>
+              <span data-lang-en>Price ↑ + Volume ↑</span>
+            </div>
+            <div class="mx-tag mx-tag--bull">
+              <span data-lang-th>Healthy bullish</span>
+              <span data-lang-en>Healthy bullish</span>
+            </div>
+            <p>
+              <span data-lang-th>เงินใหม่กำลังไหลเข้า ความเชื่อมั่นแท้จริง — เทรนด์ยืนยัน</span>
+              <span data-lang-en>Fresh money flowing in, real conviction — trend confirmed.</span>
+            </p>
+          </div>
+
+          <div class="mx mx-warn">
+            <div class="mx-head">
+              <span data-lang-th>ราคา ↑ + วอลุ่ม ↓</span>
+              <span data-lang-en>Price ↑ + Volume ↓</span>
+            </div>
+            <div class="mx-tag mx-tag--warn">
+              <span data-lang-th>Weak rally</span>
+              <span data-lang-en>Weak rally</span>
+            </div>
+            <p>
+              <span data-lang-th>ราคาขึ้นเพราะคนขายน้อย ไม่ใช่เพราะคนซื้อมาก — ระวัง false high</span>
+              <span data-lang-en>Price rises because few are selling, not because many are buying — beware false high.</span>
+            </p>
+          </div>
+
+          <div class="mx mx-bear">
+            <div class="mx-head">
+              <span data-lang-th>ราคา ↓ + วอลุ่ม ↑</span>
+              <span data-lang-en>Price ↓ + Volume ↑</span>
+            </div>
+            <div class="mx-tag mx-tag--bear">
+              <span data-lang-th>Distribution / panic</span>
+              <span data-lang-en>Distribution / panic</span>
+            </div>
+            <p>
+              <span data-lang-th>คนถือใหญ่กำลังขายออก หรือ panic — ขาลงมีน้ำหนัก</span>
+              <span data-lang-en>Big holders unloading or panic selling — downtrend has weight.</span>
+            </p>
+          </div>
+
+          <div class="mx mx-neutral">
+            <div class="mx-head">
+              <span data-lang-th>ราคา ↓ + วอลุ่ม ↓</span>
+              <span data-lang-en>Price ↓ + Volume ↓</span>
+            </div>
+            <div class="mx-tag mx-tag--neutral">
+              <span data-lang-th>Healthy pullback / drying up</span>
+              <span data-lang-en>Healthy pullback / drying up</span>
+            </div>
+            <p>
+              <span data-lang-th>ราคาย่อแบบไม่มีคนเทขาย — pullback สบาย ๆ หรือก้นค่อย ๆ ฟอร์ม</span>
+              <span data-lang-en>Price drifting down without real selling — gentle pullback or base forming.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Section 5: Volume-Derived Indicators
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🛠 Indicators ที่ใช้วอลุ่มเป็นหัวใจ</span>
+          <span data-lang-en>🛠 Indicators Built on Volume</span>
+        </h2>
+        <p class="muted">
+          <span data-lang-th>เลือกแท็บแต่ละตัว ดูสูตร + ภาพ + วิธีอ่าน (ใช้ข้อมูล AAPL ส.ค.–พ.ย. 2024)</span>
+          <span data-lang-en>Click each tab to see the formula, visual, and interpretation (using AAPL Aug–Nov 2024).</span>
+        </p>
+
+        <div class="ind-tabs">
+          <button class="ind-tab active" data-ind="obv">OBV</button>
+          <button class="ind-tab" data-ind="vwap">VWAP</button>
+          <button class="ind-tab" data-ind="profile"><span data-lang-th>Volume Profile</span><span data-lang-en>Volume Profile</span></button>
+          <button class="ind-tab" data-ind="ad">A/D Line</button>
+          <button class="ind-tab" data-ind="mfi">MFI</button>
+        </div>
+
+        <div class="ind-panel" id="ind-obv">
+          <h3>On-Balance Volume (OBV)</h3>
+          <p class="ind-formula">
+            <span data-lang-th>สูตร:</span><span data-lang-en>Formula:</span>
+            <code>OBV<sub>t</sub> = OBV<sub>t−1</sub> + (close<sub>t</sub> &gt; close<sub>t−1</sub> ? +V<sub>t</sub> : close<sub>t</sub> &lt; close<sub>t−1</sub> ? −V<sub>t</sub> : 0)</code>
+          </p>
+          <p>
+            <span data-lang-th>คิดค้นโดย Joseph Granville ปี 1963 — สะสมวอลุ่มทั้งก้อนตามทิศทางของวันนั้น
+              เส้น OBV ที่ทำ new high ก่อนราคา = สมาร์ทมันนี่กำลังสะสมล่วงหน้า
+              เส้น OBV ที่<em>ไม่</em>ทำ new high ตามราคา = ราคาขึ้นแบบไม่มีแรงสะสมจริง</span>
+            <span data-lang-en>Coined by Joseph Granville in 1963. Each day's <em>entire</em> volume is added or subtracted by close direction.
+              OBV breaking out before price = smart money accumulating early.
+              OBV failing to confirm a new price high = rally without real accumulation.</span>
+          </p>
+          <div class="ind-chart-wrap">
+            <canvas id="obv-canvas" class="chart-canvas"></canvas>
+          </div>
+          <div class="ind-readout" id="obv-readout"></div>
+        </div>
+
+        <div class="ind-panel hidden" id="ind-vwap">
+          <h3>Volume-Weighted Average Price (VWAP)</h3>
+          <p class="ind-formula">
+            <code>VWAP = Σ(typical price × volume) / Σ volume</code><br/>
+            <code>typical price = (high + low + close) / 3</code>
+          </p>
+          <p>
+            <span data-lang-th>VWAP คือราคา"เฉลี่ย"ที่ผู้คนซื้อขายจริง — ใช้กันมากในกองทุนสถาบัน
+              ราคา &gt; VWAP = ฝ่ายซื้อกำลังคุม (bullish bias)
+              ราคา &lt; VWAP = ฝ่ายขายกำลังคุม (bearish bias)
+              นิยมใช้ใน intraday trading เป็น "เส้นแบ่งความถูก-แพง" ของวันนั้น</span>
+            <span data-lang-en>VWAP is the true average price people are paying — heavily used by institutions.
+              Price &gt; VWAP = buyers in control (bullish bias).
+              Price &lt; VWAP = sellers in control (bearish bias).
+              Especially common intraday as a "fair-value line" for the session.</span>
+          </p>
+          <div class="ind-chart-wrap">
+            <canvas id="vwap-canvas" class="chart-canvas"></canvas>
+          </div>
+          <div class="ind-readout" id="vwap-readout"></div>
+        </div>
+
+        <div class="ind-panel hidden" id="ind-profile">
+          <h3>Volume Profile</h3>
+          <p class="ind-formula">
+            <span data-lang-th>วิธีคำนวณ:</span><span data-lang-en>How:</span>
+            <code><span data-lang-th>แบ่งช่วงราคาเป็น bins → รวมวอลุ่มที่ซื้อขายใน bin นั้น</span><span data-lang-en>split price into bins → sum volume traded inside each bin</span></code>
+          </p>
+          <p>
+            <span data-lang-th>ฮิสโตแกรมแนวนอน — บอกว่าราคาที่ "คนเทรดเยอะที่สุด" อยู่ตรงไหน
+              <strong>POC (Point of Control)</strong> = bin ที่วอลุ่มสูงสุด — มักทำหน้าที่เป็นแม่เหล็กดูดราคา
+              <strong>VAH/VAL</strong> = ขอบเขตที่ครอบ 70% ของวอลุ่ม (Value Area) — ราคาส่วนใหญ่อยู่ในนี้
+              ใช้หาแนวรับ-แนวต้านเชิงเชิงโครงสร้าง ไม่ใช่แค่ pattern</span>
+            <span data-lang-en>A horizontal histogram — shows where most trading happened by price level.
+              <strong>POC (Point of Control)</strong> = highest-volume bin — often acts as a magnet.
+              <strong>VAH/VAL</strong> = 70% Value Area boundaries — most trading occurs here.
+              Used to find structural support/resistance — not just pattern shapes.</span>
+          </p>
+          <div class="profile-wrap">
+            <canvas id="profile-price" class="chart-canvas profile-price"></canvas>
+            <canvas id="profile-hist" class="chart-canvas profile-hist"></canvas>
+          </div>
+          <div class="ind-readout" id="profile-readout"></div>
+        </div>
+
+        <div class="ind-panel hidden" id="ind-ad">
+          <h3>Accumulation / Distribution Line (A/D)</h3>
+          <p class="ind-formula">
+            <code>MFM = ((close − low) − (high − close)) / (high − low)</code><br/>
+            <code>MFV = MFM × volume</code><br/>
+            <code>A/D<sub>t</sub> = A/D<sub>t−1</sub> + MFV<sub>t</sub></code>
+          </p>
+          <p>
+            <span data-lang-th>คิดค้นโดย Marc Chaikin — ละเอียดกว่า OBV เพราะให้น้ำหนักตาม "ตำแหน่งของ close ในแท่ง"
+              close ใกล้ high → MFM เข้าใกล้ +1 (สะสม)
+              close ใกล้ low → MFM เข้าใกล้ −1 (กระจาย)
+              ใช้คู่กับราคาเพื่อจับ <em>divergence</em> ได้ละเอียดกว่า OBV</span>
+            <span data-lang-en>Developed by Marc Chaikin. Finer-grained than OBV because it weighs <em>where</em> the close lands inside the bar.
+              Close near high → MFM ≈ +1 (accumulation).
+              Close near low → MFM ≈ −1 (distribution).
+              Used to detect divergence with more nuance than OBV.</span>
+          </p>
+          <div class="ind-chart-wrap">
+            <canvas id="ad-canvas" class="chart-canvas"></canvas>
+          </div>
+          <div class="ind-readout" id="ad-readout"></div>
+        </div>
+
+        <div class="ind-panel hidden" id="ind-mfi">
+          <h3>Money Flow Index (MFI)</h3>
+          <p class="ind-formula">
+            <code>typical price = (high + low + close) / 3</code><br/>
+            <code>raw money flow = typical price × volume</code><br/>
+            <code>MFR = Σ positive MF<sub>14</sub> / Σ negative MF<sub>14</sub></code><br/>
+            <code>MFI = 100 − 100 / (1 + MFR)</code>
+          </p>
+          <p>
+            <span data-lang-th>เรียกอีกชื่อว่า "volume-weighted RSI" — ขยับ 0–100 เหมือน RSI
+              &gt; 80 = overbought (อาจกลับตัวลง)
+              &lt; 20 = oversold (อาจกลับตัวขึ้น)
+              ต่างจาก RSI ตรงที่ MFI เอา volume มาคิดด้วย — สัญญาณ divergence แม่นกว่ามาก</span>
+            <span data-lang-en>Often called "volume-weighted RSI" — bounded 0–100 like RSI.
+              &gt; 80 = overbought (potential reversal down).
+              &lt; 20 = oversold (potential reversal up).
+              Unlike RSI, MFI incorporates volume — divergence signals are more reliable.</span>
+          </p>
+          <div class="ind-chart-wrap">
+            <canvas id="mfi-canvas" class="chart-canvas"></canvas>
+          </div>
+          <div class="ind-readout" id="mfi-readout"></div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Section 6: Real-world Use Cases
+           ============================================================ -->
+      <section class="section">
+        <h2>
+          <span data-lang-th>🎯 ประโยชน์จริงในการเทรด</span>
+          <span data-lang-en>🎯 Real-World Use Cases</span>
+        </h2>
+
+        <div class="usecase-grid">
+          <div class="usecase">
+            <div class="uc-emoji">🚀</div>
+            <h3><span data-lang-th>1. Confirm breakout</span><span data-lang-en>1. Confirm breakouts</span></h3>
+            <p><span data-lang-th>ราคาเบรกแนวต้านพร้อมวอลุ่ม &gt; 1.5–2× ของ MA20 ของวอลุ่ม → เข้าออเดอร์มั่นใจขึ้น
+              ถ้าวอลุ่มไม่มา → รอ retest ก่อน</span>
+              <span data-lang-en>Price clears resistance on volume &gt; 1.5–2× the 20-day average → higher conviction entry.
+              No volume → wait for retest before committing.</span></p>
+          </div>
+          <div class="usecase">
+            <div class="uc-emoji">🛑</div>
+            <h3><span data-lang-th>2. Spot trend exhaustion</span><span data-lang-en>2. Spot trend exhaustion</span></h3>
+            <p><span data-lang-th>เห็น climax volume ที่ปลายเทรนด์ + แท่งเทียน reversal (shooting star, hammer)
+              = เริ่มล็อกกำไร / ระวังกลับตัว</span>
+              <span data-lang-en>Climax volume at trend extremes + reversal candles (shooting star, hammer)
+              = start locking in profits, watch for reversal.</span></p>
+          </div>
+          <div class="usecase">
+            <div class="uc-emoji">🧲</div>
+            <h3><span data-lang-th>3. หาเขตคุณค่า (Value Area)</span><span data-lang-en>3. Find value areas</span></h3>
+            <p><span data-lang-th>Volume Profile ชี้ POC = แม่เหล็ก ราคามักย้อนกลับมา
+              ใช้วาง limit order หรือ stop ที่ "ขอบ" Value Area</span>
+              <span data-lang-en>Volume Profile's POC acts as a magnet for price.
+              Use Value Area edges to place limits/stops at structural levels.</span></p>
+          </div>
+          <div class="usecase">
+            <div class="uc-emoji">🔍</div>
+            <h3><span data-lang-th>4. จับ Smart Money</span><span data-lang-en>4. Track smart money</span></h3>
+            <p><span data-lang-th>OBV / A-D Line ทำ new high ก่อนราคา = สถาบันสะสมเงียบ ๆ
+              ก่อนข่าวจะออก หรือก่อนเทรนด์ใหม่จะเริ่ม</span>
+              <span data-lang-en>OBV/A-D making new highs before price = institutions accumulating quietly
+              before news drops or a new trend begins.</span></p>
+          </div>
+          <div class="usecase">
+            <div class="uc-emoji">⏱</div>
+            <h3><span data-lang-th>5. Intraday entries</span><span data-lang-en>5. Intraday entries</span></h3>
+            <p><span data-lang-th>Day trader ใช้ VWAP เป็นเส้นกลาง — long เมื่อยืนเหนือ VWAP, short เมื่อหลุดต่ำ
+              และ rebound กลับ VWAP คือเป้าทำกำไรช่วงสั้น</span>
+              <span data-lang-en>Day traders treat VWAP as the centerline — long above, short below.
+              VWAP rebounds are short-term profit targets.</span></p>
+          </div>
+          <div class="usecase">
+            <div class="uc-emoji">⚠️</div>
+            <h3><span data-lang-th>6. กรอง false signals</span><span data-lang-en>6. Filter false signals</span></h3>
+            <p><span data-lang-th>สัญญาณจาก pattern แท่งเทียนหรือ indicator อื่น ที่<em>ไม่</em>มีวอลุ่มหนุน
+              → ความน่าเชื่อถือลดลงทันที ใช้ volume เป็น "ยาม"</span>
+              <span data-lang-en>Any candlestick or indicator signal lacking volume confirmation drops in reliability.
+              Use volume as a gatekeeper.</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           Footer
+           ============================================================ -->
+      <section class="section" style="text-align:center;">
+        <p class="muted" style="font-size:13px;">
+          <span data-lang-th>
+            ⚠️ Volume เป็นเครื่องมือ <em>ประกอบ</em> — ไม่ใช่ทุกครั้งที่วอลุ่มสูงจะตรงตามทฤษฎี
+            (เช่น ETF rebalancing, options expiry, dividend ex-date จะให้วอลุ่มผิดปกติ)
+            ใช้คู่กับ price action + context เสมอ
+          </span>
+          <span data-lang-en>
+            ⚠️ Volume is a <em>supporting</em> tool — not every spike fits the theory
+            (ETF rebalancing, options expiry, ex-dividend events all distort volume).
+            Always combine with price action and context.
+          </span>
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="../../assets/i18n.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

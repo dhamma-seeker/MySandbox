@@ -102,6 +102,26 @@
       "tags": ["finance", "trading", "elliott", "การเงิน", "เทคนิคอล"]
     },
     {
+      "id": "volume-indicator",
+      "slug": "volume-indicator",
+      "path": "sandboxes/volume-indicator/index.html",
+      "icon": "📊",
+      "category": "technical-analysis",
+      "title": {
+        "th": "Volume Indicator",
+        "en": "Volume Indicator"
+      },
+      "subtitle": {
+        "th": "เชื้อเพลิงของราคา · OBV, VWAP, Volume Profile, A/D, MFI",
+        "en": "The fuel of price · OBV, VWAP, Volume Profile, A/D, MFI"
+      },
+      "description": {
+        "th": "วอลุ่มคืออะไร อ่านอย่างไร ใช้ทำไม + 5 หลักการคลาสสิก, ตาราง Volume×Price 2×2, indicators 5 ตัวพร้อมข้อมูลจริง AAPL/GME/PTT",
+        "en": "What volume is, how to read it, why it matters + 5 classical principles, the Volume×Price 2×2 matrix, and 5 derived indicators with real AAPL/GME/PTT data."
+      },
+      "tags": ["finance", "trading", "indicator", "volume", "การเงิน", "เทคนิคอล"]
+    },
+    {
       "id": "wyckoff-method",
       "slug": "wyckoff-method",
       "path": "sandboxes/wyckoff-method/index.html",
