@@ -1,0 +1,705 @@
+/* ===== Dana sandbox theme — calm gold/lotus ===== */
+.dana-page {
+  --gold: #b8860b;
+  --gold-soft: #fef9e7;
+  --gold-deep: #7c5e10;
+  --lotus: #c084fc;
+  --lotus-soft: #f3e8ff;
+  --pali-color: #6b21a8;
+  --rose: #fda4af;
+  --rose-soft: #ffe4e6;
+  --akusala: #ef4444;
+  --kusala: #10b981;
+  --neutral: #94a3b8;
+}
+
+.dana-body {
+  background:
+    radial-gradient(1200px 700px at 12% -10%, #fff5d6 0%, transparent 60%),
+    radial-gradient(900px 600px at 100% 100%, #f5e6ff 0%, transparent 55%),
+    var(--bg);
+}
+
+/* Pali typography */
+.pali, .pali-th, .pali-roman {
+  font-family: 'Noto Serif', 'Noto Sans Thai', serif;
+  color: var(--pali-color);
+}
+.pali { font-style: italic; font-weight: 500; }
+html[lang="th"] .pali { font-style: normal; }
+.pali-th { font-weight: 600; }
+
+/* ===== Hero ===== */
+.dana-hero {
+  text-align: center;
+  padding: 32px 16px 8px;
+  margin-bottom: 24px;
+}
+.dana-hero__lotus {
+  font-size: 56px;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 4px 12px rgba(192,132,252,0.35));
+}
+.dana-hero h1 {
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  color: var(--gold-deep);
+}
+.dana-hero .sub {
+  color: var(--text-soft);
+  font-size: 15px;
+  margin-bottom: 22px;
+}
+
+/* Pali quote block */
+.pali-quote {
+  background: linear-gradient(180deg, var(--gold-soft) 0%, #fffbed 100%);
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 0 auto;
+  max-width: 620px;
+  text-align: left;
+  box-shadow: var(--shadow);
+}
+.pali-quote .pali {
+  font-size: 18px;
+  margin-bottom: 8px;
+  line-height: 1.7;
+}
+.pali-quote .trans {
+  color: var(--text-soft);
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.pali-quote cite {
+  font-size: 12px;
+  color: var(--gold-deep);
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.dana-hero__quote { margin-top: 12px; }
+
+/* ===== Section common ===== */
+.section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.sec-num {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+.dana-source {
+  font-size: 12.5px;
+  color: var(--gold-deep);
+  font-weight: 500;
+  margin-top: -4px;
+  margin-bottom: 14px;
+}
+.dana-callout {
+  background: var(--gold-soft);
+  border: 1px solid #f3d97a;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 14.5px;
+  color: var(--gold-deep);
+  margin-top: 14px;
+}
+.dana-callout--insight {
+  background: var(--lotus-soft);
+  border-color: #d8b4fe;
+  color: #581c87;
+}
+
+/* ===== Two types of giving ===== */
+.dana-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0 6px;
+}
+.dana-type {
+  background: linear-gradient(180deg, #fff 0%, #fdfcf7 100%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+.dana-type__icon {
+  font-size: 32px;
+  margin-bottom: 6px;
+}
+.dana-type h3 {
+  font-size: 17px;
+  margin-bottom: 6px;
+  color: var(--gold-deep);
+}
+.dana-type p {
+  font-size: 14px;
+  color: var(--text-soft);
+  line-height: 1.65;
+  margin: 0;
+}
+@media (max-width: 560px) {
+  .dana-types { grid-template-columns: 1fr; }
+}
+
+/* ===== Cetanā 3-kāla timeline ===== */
+.cetana-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 24px 0 16px;
+  padding: 12px 0;
+}
+.cetana-line {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--lotus) 100%);
+  z-index: 0;
+}
+.cetana-node {
+  position: relative;
+  z-index: 1;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.cetana-node:hover { transform: translateY(-2px); }
+.cetana-node__dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--gold);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  color: var(--gold-deep);
+  box-shadow: 0 2px 6px rgba(184,134,11,0.18);
+  transition: all 0.18s;
+}
+.cetana-node--active .cetana-node__dot {
+  background: var(--gold);
+  color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(184,134,11,0.4);
+}
+.cetana-node__title {
+  font-size: 14px;
+  color: var(--pali-color);
+  font-weight: 600;
+  text-align: center;
+}
+.cetana-node__sub {
+  font-size: 12px;
+  color: var(--text-soft);
+}
+.cetana-panel {
+  background: var(--gold-soft);
+  border: 1px solid #f3d97a;
+  border-radius: 12px;
+  padding: 16px 18px;
+  min-height: 80px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  transition: opacity 0.2s;
+}
+.cetana-panel__title {
+  font-weight: 700;
+  color: var(--gold-deep);
+  margin-bottom: 4px;
+}
+.cetana-panel__pali {
+  color: var(--pali-color);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.cetana-panel__hint {
+  color: var(--muted);
+  font-size: 13.5px;
+  text-align: center;
+}
+
+/* ===== Ladder section ===== */
+.dana-ladder-section { padding-bottom: 32px; }
+
+.dana-ladder {
+  position: relative;
+  margin: 16px auto 24px;
+  padding: 32px 12px 12px;
+  max-width: 100%;
+}
+.dana-ladder__rail {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--lotus) 0%, var(--gold) 70%, #d4d4d4 100%);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+.dana-ladder__nibbana {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--lotus);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+.dana-ladder__base {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: italic;
+}
+.dana-ladder__steps {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  z-index: 1;
+}
+
+.ladder-step {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.18s;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  position: relative;
+}
+.ladder-step:hover {
+  border-color: var(--gold);
+  transform: translateX(4px);
+  box-shadow: 0 4px 14px rgba(184,134,11,0.12);
+}
+.ladder-step--active {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+  box-shadow: 0 4px 14px rgba(184,134,11,0.2);
+}
+.ladder-step__num {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
+}
+.ladder-step__body {
+  padding-left: 4px;
+}
+.ladder-step__pali {
+  font-family: 'Noto Serif', 'Noto Sans Thai', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--pali-color);
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+html[lang="th"] .ladder-step__pali { font-style: normal; font-weight: 500; }
+.ladder-step__title {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--text);
+}
+
+/* Step level colors */
+.ladder-step[data-level="akusala"] .ladder-step__num { background: #ef4444; }
+.ladder-step[data-level="conventional"] .ladder-step__num { background: #f59e0b; }
+.ladder-step[data-level="kusala"] .ladder-step__num { background: #10b981; }
+.ladder-step[data-level="ariya"] .ladder-step__num {
+  background: linear-gradient(135deg, var(--lotus) 0%, var(--gold) 100%);
+}
+
+/* Rung visual line */
+.ladder-step::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  background: var(--gold);
+  opacity: 0.45;
+  transform: translateY(-50%);
+}
+
+/* Ladder panel */
+.ladder-panel {
+  background: linear-gradient(180deg, #fff 0%, var(--gold-soft) 100%);
+  border: 1px solid #f3d97a;
+  border-radius: 14px;
+  padding: 18px 20px;
+  min-height: 120px;
+  margin-top: 8px;
+}
+.ladder-panel__hint {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  padding: 18px 0;
+}
+.ladder-panel__num {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+.ladder-panel__title {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--gold-deep);
+  vertical-align: middle;
+}
+.ladder-panel__pali {
+  background: rgba(255,255,255,0.7);
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 12px 0 8px;
+  font-family: 'Noto Serif', 'Noto Sans Thai', serif;
+  color: var(--pali-color);
+  font-size: 14.5px;
+  line-height: 1.7;
+  font-style: italic;
+}
+html[lang="th"] .ladder-panel__pali { font-style: normal; }
+.ladder-panel__gloss {
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.ladder-panel__fruit {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  background: rgba(255,255,255,0.65);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border-left: 3px solid var(--gold);
+}
+.ladder-panel__fruit-label {
+  font-weight: 700;
+  color: var(--gold-deep);
+  flex-shrink: 0;
+}
+
+/* ===== Visuddhi 4-quadrant ===== */
+.visuddhi-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr 1fr;
+  gap: 6px;
+  margin: 16px 0;
+  font-size: 13.5px;
+}
+.vh-cell {
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 76px;
+  line-height: 1.5;
+}
+.vh-cell--head {
+  background: transparent;
+  font-weight: 600;
+  color: var(--text-soft);
+  font-size: 13px;
+}
+.vh-cell--best { background: linear-gradient(135deg, #fef3c7, #fde68a); color: var(--gold-deep); }
+.vh-cell--good { background: var(--lotus-soft); color: #6b21a8; }
+.vh-cell--mid { background: #e0f2fe; color: #075985; }
+.vh-cell--worst { background: #fee2e2; color: #991b1b; }
+.vh-rank {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 2px;
+}
+@media (max-width: 560px) {
+  .visuddhi-grid {
+    grid-template-columns: 80px 1fr 1fr;
+    font-size: 12px;
+  }
+  .vh-cell { padding: 8px; min-height: 70px; }
+}
+
+/* 14 recipients table */
+.recip-h {
+  font-size: 17px;
+  margin: 26px 0 10px;
+  color: var(--gold-deep);
+}
+.recip-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.recip-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.recip-table th, .recip-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.recip-table th {
+  background: var(--gold-soft);
+  color: var(--gold-deep);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.recip-table tr:last-child td { border-bottom: 0; }
+.recip-table tr.tier-buddha td { background: linear-gradient(90deg, #fef3c7 0%, #fffbed 100%); font-weight: 600; }
+.recip-table tr.tier-pacceka td { background: #fffbed; }
+.recip-table tr.tier-ariya td { background: #faf5ff; }
+.recip-table tr.tier-puthujjana td { background: #fafafa; }
+.recip-table tr.tier-animal td { background: #f5f5f5; color: var(--text-soft); }
+.recip-table .pali-cell {
+  font-family: 'Noto Serif', 'Noto Sans Thai', serif;
+  font-style: italic;
+  color: var(--pali-color);
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+html[lang="th"] .recip-table .pali-cell { font-style: normal; }
+.recip-table .mult {
+  font-weight: 700;
+  color: var(--gold-deep);
+  white-space: nowrap;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ===== Saṅghadāna climax block ===== */
+.sangha-climax {
+  position: relative;
+  margin: 32px -4px 8px;
+  padding: 26px 18px 18px;
+  background:
+    radial-gradient(600px 200px at 50% 0%, rgba(255,255,255,0.7), transparent 70%),
+    linear-gradient(180deg, #fffbed 0%, var(--gold-soft) 50%, var(--lotus-soft) 100%);
+  border: 2px solid var(--gold);
+  border-radius: 18px;
+  box-shadow: 0 8px 30px rgba(184,134,11,0.14);
+}
+.sangha-climax__crown {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, #e0b441 100%);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  box-shadow: 0 4px 14px rgba(184,134,11,0.45);
+  border: 3px solid #fff;
+}
+.sangha-climax__h {
+  text-align: center;
+  margin: 4px 0 14px;
+  font-size: 18px;
+}
+.sangha-story {
+  font-size: 14px;
+  line-height: 1.75;
+  background: rgba(255,255,255,0.7);
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin: 0 0 14px !important;
+  color: var(--text);
+}
+.sangha-climax__quote {
+  background: linear-gradient(180deg, #fff 0%, #fffaeb 100%);
+  border-left-color: var(--lotus);
+  margin: 0 0 14px !important;
+  max-width: none;
+}
+.sangha-table tr.tier-buddha td {
+  background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%) !important;
+}
+.dana-callout--lotus {
+  background: linear-gradient(135deg, var(--lotus-soft) 0%, var(--gold-soft) 100%);
+  border-color: #d8b4fe;
+  color: #581c87;
+  margin-top: 14px;
+}
+
+@media (max-width: 480px) {
+  .sangha-climax { padding: 22px 12px 14px; }
+  .sangha-climax__h { font-size: 16px; }
+}
+
+/* ===== Velāma ladder ===== */
+.velama-ladder {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 6px;
+  margin: 18px 0;
+  position: relative;
+}
+.velama-rung {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px 10px 14px;
+  gap: 12px;
+  font-size: 13.5px;
+  position: relative;
+  transition: transform 0.15s;
+}
+.velama-rung:hover { transform: translateX(2px); border-color: var(--gold); }
+.velama-rung__rank {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gold);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.velama-rung--peak {
+  background: linear-gradient(135deg, var(--lotus-soft), var(--gold-soft));
+  border-color: var(--lotus);
+  font-weight: 600;
+}
+.velama-rung--peak .velama-rung__rank {
+  background: linear-gradient(135deg, var(--lotus), var(--gold));
+}
+.velama-rung--velama {
+  background: linear-gradient(90deg, #fef3c7 0%, #fff 100%);
+  border-style: dashed;
+  font-style: italic;
+}
+.velama-rung--velama .velama-rung__rank { background: #94a3b8; }
+.velama-rung__pali {
+  font-family: 'Noto Serif', 'Noto Sans Thai', serif;
+  font-style: italic;
+  color: var(--pali-color);
+  font-size: 12px;
+  white-space: nowrap;
+}
+html[lang="th"] .velama-rung__pali { font-style: normal; }
+@media (max-width: 600px) {
+  .velama-rung { grid-template-columns: 40px 1fr; }
+  .velama-rung__pali { display: none; }
+}
+
+/* ===== Examples ===== */
+.examples {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 14px 0;
+}
+.example {
+  display: flex;
+  gap: 14px;
+  background: #fdfcf7;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  align-items: flex-start;
+}
+.example__icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+.example p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-soft);
+  margin: 0;
+}
+
+/* ===== Footer ===== */
+.dana-footer {
+  margin-top: 22px;
+  padding: 18px;
+  background: linear-gradient(180deg, var(--lotus-soft) 0%, var(--gold-soft) 100%);
+  border-radius: 12px;
+  border: 1px solid #e9d5ff;
+}
+.dana-footer p {
+  font-size: 14.5px;
+  color: var(--gold-deep);
+  line-height: 1.75;
+  margin-bottom: 8px;
+}
+.dana-footer .disclaimer {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+  .dana-hero h1 { font-size: 24px; }
+  .dana-hero__lotus { font-size: 44px; }
+  .pali-quote { padding: 16px; }
+  .pali-quote .pali { font-size: 16px; }
+  .ladder-step { grid-template-columns: 40px 1fr; padding: 10px 12px; }
+  .ladder-step__num { width: 30px; height: 30px; font-size: 13px; }
+  .ladder-step__pali { font-size: 12.5px; }
+  .ladder-step__title { font-size: 13.5px; }
+  .cetana-line { left: 18%; right: 18%; }
+}

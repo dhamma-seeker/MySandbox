@@ -16,6 +16,11 @@
       "label": { "th": "เทคนิคอล", "en": "Technical Analysis" },
       "color": "#0ea5e9",
       "parents": ["finance"]
+    },
+    {
+      "id": "dhamma",
+      "label": { "th": "ธรรมะ", "en": "Dhamma" },
+      "color": "#b8860b"
     }
   ],
   "sandboxes": [
@@ -115,6 +120,26 @@
         "en": "3 Laws, 4-phase cycle, full A-E schematics of Accumulation/Distribution with all events, Volume×Price scenarios, timed labeling game, and a flashcard quiz."
       },
       "tags": ["finance", "trading", "wyckoff", "การเงิน", "เทคนิคอล"]
+    },
+    {
+      "id": "dana-intention",
+      "slug": "dana-intention",
+      "path": "sandboxes/dana-intention/index.html",
+      "icon": "🪷",
+      "category": "dhamma",
+      "title": {
+        "th": "ระดับเจตนาในการให้ทาน",
+        "en": "Levels of Intention in Giving"
+      },
+      "subtitle": {
+        "th": "เจตนาคือกรรม · ทานวัตถุ ๘ · เวลามสูตร",
+        "en": "Cetanā is kamma · 8 grounds for giving · Velāma sutta"
+      },
+      "description": {
+        "th": "บันไดเจตนา ๘ ขั้นจาก ทานวัตถุสูตร AN 8.33 ตั้งแต่ให้เพราะชอบ ชัง หลง กลัว ไปจนถึงให้เพื่อประดับจิต-สู่นิพพาน พร้อมเจตนา ๓ กาล ทักขิณาวิภังค์ MN 142 และเวลามสูตร AN 9.20 บาลี-ไทย-อังกฤษ",
+        "en": "An 8-step ladder of motives from AN 8.33 — from giving out of liking, hostility, delusion, fear up to giving as 'adornment of the mind' leading to nibbāna. Plus the three phases of intention, Dakkhiṇāvibhaṅga MN 142, and Velāma Sutta AN 9.20 — Pali · Thai · English."
+      },
+      "tags": ["dhamma", "buddhism", "ธรรมะ", "ทาน", "บาลี"]
     }
   ]
 }
